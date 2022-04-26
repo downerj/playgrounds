@@ -187,7 +187,7 @@ vec3 hsv2rgb(vec3 c) {
 void main() {
   float x = gl_FragCoord.x;
   float y = gl_FragCoord.y;
-  float hue = mod((y - x) / 1000.0 + time / 1000.0, 360.0);
+  float hue = mod((y - x) / 10.0 + time / 1000.0, 360.0);
   float saturation = 1.0;
   float value = 1.0;
   vec3 hsv = vec3(hue, saturation, value);
@@ -207,7 +207,7 @@ const dynamicIndices = new Uint16Array([
 
 function getGL(canvas) {
   for (const api of ['webgl', 'webgl-experimental']) {
-    const ctx = canvas.getContext(api);
+    const ctx = canvas.getContext(api, {antialias: false,});
     if (ctx) {
       return ctx;
     }
@@ -290,6 +290,7 @@ function createBlankTexture(gl, width, height) {
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
   gl.bindTexture(gl.TEXTURE_2D, null);
   return texture;
 }
@@ -379,7 +380,7 @@ function window_onLoad() {
     cubeIndices,
     gl.STATIC_DRAW
   );
-  const textureWidth = 512;
+  const textureWidth = 2**4;
   const textureHeight = textureWidth;
   const cubeTexture = createBlankTexture(gl, textureWidth, textureHeight);
   
