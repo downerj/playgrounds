@@ -1,0 +1,10 @@
+# Vim backups
+**/*.swp
+**/.*.swp
+
+# Emacs backups
+**/#*#
+**/.#*#
+**/*~
+**/.*~
+
