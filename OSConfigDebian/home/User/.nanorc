@@ -1,0 +1,6 @@
+set linenumbers
+set locking
+set autoindent
+set mouse
+set regexp
+set nonewlines

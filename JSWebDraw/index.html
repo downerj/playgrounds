@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>WebDraw</title>
+        <meta charset="UTF-8" />
+        <style>
+            canvas {
+                border: 1px solid #000;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .canvases {
+                position: relative;
+                width: 802px;
+                top: 0;
+                left: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvases">
+            <canvas id="cvsBG" width="800px" height="800px" style="z-index: 0;">
+                Your browser does not support the
+                <code>&lt;canvas&gt;</code> element.
+            </canvas>
+            <canvas id="cvsFG" width="800px" height="800px" style="z-index: 1;">
+            </canvas>
+        </div>
+
+        <script src="utils.js"></script>
+        <script src="test.js"></script>
+    </body>
+</html>

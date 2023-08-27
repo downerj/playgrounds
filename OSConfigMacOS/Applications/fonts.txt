@@ -1,0 +1,16 @@
+# From Google Fonts (https://fonts.google.com):
+Anonymous Pro
+Fira Mono
+Noto Sans Mono
+Source Code Pro
+IBM Plex Mono
+
+# https://sourceforge.net/projects/cm-unicode
+Computer Modern Unicode
+
+# https://www.jetbrains.com/lp/mono/
+JetBrains Mono
+
+# https://github.com/belluzj/fantasque-sans
+Fantasque Sans Mono
+

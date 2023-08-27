@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+##########
+# Run QEMU
+##########
+
+# Old commands for USB keyboard and mouse.
+# -M mac99
+# -device usb-kbd
+# -device usb-mouse
+
+# Commands for network. (Replace `mynet0`?)
+# -netdev user,id=mynet0
+# -device sungem,netdev=mynet0
+
+D="$HOME/Applications/MacOS 9 (QEMU).app/Contents/Resources"
+/usr/local/bin/qemu-system-ppc \
+  -bios openbios-ppc \
+  -M mac99,via=pmu \
+  -m 512 \
+  -boot c \
+  -hda "$D/disk.qcow2" \
+  -prom-env "auto-boot?=true" \
+  -prom-env "boot-args=-v" \
+  -prom-env "vga-ndrv?=true" \
+  -vga std \
+  -g 800x600x32 \
+  -drive file="$D/Shared.img",format=raw,media=disk

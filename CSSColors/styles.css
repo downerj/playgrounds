@@ -1,0 +1,107 @@
+:root {
+  --input-highlight-color: #00ff00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+  font-size: 18px;
+}
+
+body, input[type=text], select {
+  font-family: Verdana, sans-serif;
+  color: white;
+}
+
+input[type=text], select {
+  font-size: 16px;
+}
+
+.meta-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 300px/2);
+  right: calc(50% - 300px/2);
+  overflow: hidden;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 50%;
+  border: 1px solid white;
+  margin: 0 auto;
+}
+
+canvas {
+  background-color: black;
+}
+
+.controls-container {
+  overflow-y: auto;
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+table td:first-child {
+  width: 70px;
+}
+
+table td:last-child {
+  width: 50px;
+  text-align: right;
+}
+
+table td:last-child label {
+  width: 100%;
+}
+
+table input, table select {
+  width: 100%;
+}
+
+input[type=range] {
+  cursor: grab;
+}
+
+input[type=text], select {
+  border: 0;
+  border-bottom: 2px solid white;
+  background-color: black;
+}
+
+input[type=text]:focus, select:focus {
+  outline: none;
+  border-bottom: 2px solid var(--input-highlight-color);
+  color: var(--input-highlight-color);
+}
+
+input[type=text]:focus::selection, select:focus::selection {
+  background-color: var(--input-highlight-color);
+  color: black;
+}
+
+td::selection, label::selection {
+  background-color: white;
+  color: black;
+}
+
+input[type=text]::selection, select::selection {
+  background-color: white;
+  color: black;
+}

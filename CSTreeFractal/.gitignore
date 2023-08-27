@@ -1,0 +1,6 @@
+# VisualStudio build output
+TreeFractal/obj
+TreeFractal/bin
+
+# Visual Studio settings
+.vs

@@ -1,0 +1,173 @@
+ID,Source URL,Source File Name,Destination File Name,Name,Damage,Letter Codes,Memory (MB),Description
+1,https://static.wikia.nocookie.net/megaman/images/b/bc/MMBN3MChip01.png/revision/latest?cb=20110812231025,MMBN3MChip01.png,Mega_001_Muramasa.png,Muramasa,????,"M
+	",74,Power=amount of HP lost!
+2,https://static.wikia.nocookie.net/megaman/images/f/fc/MMBN2Chip258.png/revision/latest?cb=20111112021818,MMBN2Chip258.png,Mega_002_HeroSwrd.png,HeroSwrd,180,"P
+	",65,Legendary swrd cuts 3 sq!
+3,https://static.wikia.nocookie.net/megaman/images/5/50/MMBN2Chip082.png/revision/latest?cb=20111112011221,MMBN2Chip082.png,Mega_003_ZeusHamr.png,ZeusHamr,250,"Z
+	",90,Damages anyone on a panel
+4,https://static.wikia.nocookie.net/megaman/images/1/12/MMBN3MChip04.png/revision/latest?cb=20111120223945,MMBN3MChip04.png,Mega_004_StandOut.png,StandOut,220,"P
+	",22,Heat: Send Fire into hole
+5,https://static.wikia.nocookie.net/megaman/images/b/bc/MMBN3MChip05.png/revision/latest?cb=20111120224003,MMBN3MChip05.png,Mega_005_Salamndr.png,Salamndr,300,"*
+	S",50,Heat: Send Fire into hole
+6,https://static.wikia.nocookie.net/megaman/images/4/4b/MMBN3MChip06.png/revision/latest?cb=20111120224021,MMBN3MChip06.png,Mega_006_WatrLine.png,WatrLine,180,"*
+	C",18,Water: Draw wter from hole
+7,https://static.wikia.nocookie.net/megaman/images/3/3f/MMBN3MChip07.png/revision/latest?cb=20111120224040,MMBN3MChip07.png,Mega_007_Fountain.png,Fountain,240,"*
+	D",48,Water: Draw wter from hole
+8,https://static.wikia.nocookie.net/megaman/images/2/2c/MMBN3MChip08.png/revision/latest?cb=20111120224056,MMBN3MChip08.png,Mega_008_Lightning.png,Lightning,160,"*
+	L",30,Elec: Dmgs object & area
+9,https://static.wikia.nocookie.net/megaman/images/2/23/MMBN3MChip09.png/revision/latest?cb=20111120224210,MMBN3MChip09.png,Mega_009_Bolt.png,Bolt,210,"*
+	T",52,Elec: Dmgs object & area
+10,https://static.wikia.nocookie.net/megaman/images/5/5e/MMBN2Chip254.png/revision/latest?cb=20111112021739,MMBN2Chip254.png,Mega_010_GaiaSwrd.png,GaiaSwrd,100,"*
+	G",28,Wood: Take power frm next chip
+11,https://static.wikia.nocookie.net/megaman/images/8/8b/MMBN3MChip11.png/revision/latest?cb=20111120224115,MMBN3MChip11.png,Mega_011_GaiaBlad.png,GaiaBlad,100,"*
+	G",55,Wood: Take power fr. next chip
+12,https://static.wikia.nocookie.net/megaman/images/a/ac/MMBN2Chip259.png/revision/latest?cb=20111112021837,MMBN2Chip259.png,Mega_012_Meteors.png,Meteors,40,"R
+	",86,Drop many meteors on enemy
+13,https://static.wikia.nocookie.net/megaman/images/5/5a/MMBN2Chip142.png/revision/latest?cb=20111112013533,MMBN2Chip142.png,Mega_013_Guardian.png,Guardian,-,"O
+	",82,Statue punishes when hit
+14,https://static.wikia.nocookie.net/megaman/images/2/25/MMBNChip104.png/revision/latest?cb=20111111011248,MMBNChip104.png,Mega_014_Anubis.png,Anubis,-,"A
+	",90,Anubis poisons enemies
+15,https://static.wikia.nocookie.net/megaman/images/2/28/MMBN2Chip112.png/revision/latest?cb=20111112012316,MMBN2Chip112.png,Mega_015_GodStone.png,GodStone,150,"S
+	",66,Summons a GodStone from hole
+16,https://static.wikia.nocookie.net/megaman/images/9/9c/MMBN2Chip113.png/revision/latest?cb=20111112012334,MMBN2Chip113.png,Mega_016_OldWood.png,OldWood,100,"W
+	",72,Summons OldWood from hole
+17,https://static.wikia.nocookie.net/megaman/images/9/9d/MMBN2Chip177.png/revision/latest?cb=20111112015156,MMBN2Chip177.png,Mega_017_Jealousy.png,Jealousy,100,"J
+	",64,More dmg if enemy has chips
+18,https://static.wikia.nocookie.net/megaman/images/a/a6/MMBN3MChip18.png/revision/latest?cb=20111120224142,MMBN3MChip18.png,Mega_018_Poltrgst.png,Poltrgst,-,"G
+	",58,Objects thrown at enemies!
+19,https://static.wikia.nocookie.net/megaman/images/3/3f/MMBN2Chip166.png/revision/latest?cb=20111112014759,MMBN2Chip166.png,Mega_019_LifeAura.png,LifeAura,-,"D
+	",77,Repel all attacks under 200
+20,https://static.wikia.nocookie.net/megaman/images/8/88/MMBN2Chip148.png/revision/latest?cb=20111112013933,MMBN2Chip148.png,Mega_020_FullCust.png,FullCust,-,"*
+	",10,CustGauge instantly refills!
+21,https://static.wikia.nocookie.net/megaman/images/e/e4/MMBN2Chip187.png/revision/latest?cb=20111112015538,MMBN2Chip187.png,Mega_021_Atk+30.png,Atk+30,-,"*
+	",50,+30 for selected atk chip
+22,https://static.wikia.nocookie.net/megaman/images/7/70/MMBN3MChip22.png/revision/latest?cb=20111120224226,MMBN3MChip22.png,Mega_022_Navi+40.png,Navi+40,-,"*
+	",60,+40 for selected Navi chip
+23,https://static.wikia.nocookie.net/megaman/images/3/38/MMBN3MChip23.png/revision/latest?cb=20111120224245,MMBN3MChip23.png,Mega_023_Roll.png,Roll,20,"R
+	",10,"Attack an enemy, heal you"
+24,https://static.wikia.nocookie.net/megaman/images/4/43/MMBN3MChip24.png/revision/latest?cb=20111120224301,MMBN3MChip24.png,Mega_024_Roll V2.png,Roll V2,30,"R
+	",22,"Attack an enemy, heal you"
+25,https://static.wikia.nocookie.net/megaman/images/c/c5/MMBN3MChip25.png/revision/latest?cb=20111120224317,MMBN3MChip25.png,Mega_025_Roll V3.png,Roll V3,40,"R
+	",34,"Attack an enemy, heal you"
+26,https://static.wikia.nocookie.net/megaman/images/b/b2/MMBN3MChip26.png/revision/latest?cb=20110728181149,MMBN3MChip26.png,Mega_026_GutsMan.png,GutsMan,50,"G
+	",15,Sneaks up to smash panels!
+27,https://static.wikia.nocookie.net/megaman/images/4/44/MMBN3MChip27.png/revision/latest?cb=20110728181221,MMBN3MChip27.png,Mega_027_GutsMan V2.png,GutsMan V2,70,"G
+	",41,Sneaks up to smash panels!
+28,https://static.wikia.nocookie.net/megaman/images/a/ad/MMBN3MChip28.png/revision/latest?cb=20110728181329,MMBN3MChip28.png,Mega_028_GutsMan V3.png,GutsMan V3,90,"G
+	",57,Sneaks up to smash panels!
+29,https://static.wikia.nocookie.net/megaman/images/4/42/MMBN3MChip29.png/revision/latest?cb=20110728181400,MMBN3MChip29.png,Mega_029_GutsMan V4.png,GutsMan V4,100,"G
+	",63,Sneaks up to smash panels!
+30,https://static.wikia.nocookie.net/megaman/images/b/b2/MMBN3MChip30.png/revision/latest?cb=20111120224337,MMBN3MChip30.png,Mega_030_ProtoMan.png,ProtoMan,160,"B
+	",68,Moves in to slice the enemy
+31,https://static.wikia.nocookie.net/megaman/images/6/67/MMBN3MChip31.png/revision/latest?cb=20111120224353,MMBN3MChip31.png,Mega_031_ProtoMn V2.png,ProtoMn V2,180,"B
+	",76,Moves in to slice the enemy
+32,https://static.wikia.nocookie.net/megaman/images/1/15/MMBN3MChip32.png/revision/latest?cb=20111120224410,MMBN3MChip32.png,Mega_032_ProtoMn V3.png,ProtoMn V3,200,"B
+	",82,Moves in to slice the enemy
+33,https://static.wikia.nocookie.net/megaman/images/0/0e/MMBN3MChip33.png/revision/latest?cb=20111120224425,MMBN3MChip33.png,Mega_033_ProtoMn V4.png,ProtoMn V4,220,"B
+	",90,Moves in to slice the enemy
+34,https://static.wikia.nocookie.net/megaman/images/e/e0/MMBN3MChip34.png/revision/latest?cb=20111120224445,MMBN3MChip34.png,Mega_034_FlashMan.png,FlashMan,50,"F
+	",39,Flash atk paralyzes enemy
+35,https://static.wikia.nocookie.net/megaman/images/0/07/MMBN3MChip35.png/revision/latest?cb=20111120224504,MMBN3MChip35.png,Mega_035_FlashMn V2.png,FlashMn V2,70,"F
+	",59,Flash atk paralyzes enemy
+36,https://static.wikia.nocookie.net/megaman/images/1/1f/MMBN3MChip36.png/revision/latest?cb=20111120224520,MMBN3MChip36.png,Mega_036_FlashMn V3.png,FlashMn V3,90,"F
+	",69,Flash atk paralyzes enemy
+37,https://static.wikia.nocookie.net/megaman/images/4/4e/MMBN3MChip37.png/revision/latest?cb=20111120224537,MMBN3MChip37.png,Mega_037_FlashMn V4.png,FlashMn V4,120,"F
+	",79,Flash atk paralyzes enemy
+38,https://static.wikia.nocookie.net/megaman/images/0/09/MMBN3MChip38.png/revision/latest?cb=20111120224600,MMBN3MChip38.png,Mega_038_BeastMan.png,BeastMan,40,"B
+	",38,Claw atk 3 squares ahead!
+39,https://static.wikia.nocookie.net/megaman/images/e/ed/MMBN3MChip39.png/revision/latest?cb=20111120224616,MMBN3MChip39.png,Mega_039_BeastMn V2.png,BeastMn V2,50,"B
+	",60,Claw atk 3 squares ahead!
+40,https://static.wikia.nocookie.net/megaman/images/8/86/MMBN3MChip40.png/revision/latest?cb=20111120224639,MMBN3MChip40.png,Mega_040_BeastMn V3.png,BeastMn V3,60,"B
+	",68,Claw atk 3 squares ahead!
+41,https://static.wikia.nocookie.net/megaman/images/8/8f/MMBN3MChip41.png/revision/latest?cb=20111120224657,MMBN3MChip41.png,Mega_041_BeastMn V4.png,BeastMn V4,70,"B
+	",76,Claw atk 3 squares ahead!
+42,https://static.wikia.nocookie.net/megaman/images/6/66/MMBN3MChip42.png/revision/latest?cb=20111120224716,MMBN3MChip42.png,Mega_042_BubblMan.png,BubblMan,20,"B
+	",50,Fires several AquaShots
+43,https://static.wikia.nocookie.net/megaman/images/d/db/MMBN3MChip43.png/revision/latest?cb=20111120224733,MMBN3MChip43.png,Mega_043_BubblMn V2.png,BubblMn V2,20,"B
+	",62,Fires several AquaShots
+44,https://static.wikia.nocookie.net/megaman/images/8/8f/MMBN3MChip44.png/revision/latest?cb=20111120224751,MMBN3MChip44.png,Mega_044_BubblMn V3.png,BubblMn V3,20,"B
+	",74,Fires several AquaShots
+45,https://static.wikia.nocookie.net/megaman/images/b/b3/MMBN3MChip45.png/revision/latest?cb=20111120224810,MMBN3MChip45.png,Mega_045_BubblMn V4.png,BubblMn V4,20,"B
+	",80,Fires several AquaShots
+46,https://static.wikia.nocookie.net/megaman/images/2/2a/MMBN3MChip46.png/revision/latest?cb=20111120224826,MMBN3MChip46.png,Mega_046_DesrtMan.png,DesrtMan,120,"D
+	",38,Launches fists at enemies!
+47,https://static.wikia.nocookie.net/megaman/images/f/fe/MMBN3MChip47.png/revision/latest?cb=20111120224922,MMBN3MChip47.png,Mega_047_DesrtMn V2.png,DesrtMn V2,140,"D
+	",52,Launches fists at enemies!
+48,https://static.wikia.nocookie.net/megaman/images/6/6c/MMBN3MChip48.png/revision/latest?cb=20111120224938,MMBN3MChip48.png,Mega_048_DesrtMn V3.png,DesrtMn V3,160,"D
+	",64,Launches fists at enemies!
+49,https://static.wikia.nocookie.net/megaman/images/c/c0/MMBN3MChip49.png/revision/latest?cb=20111120224955,MMBN3MChip49.png,Mega_049_DesrtMn V4.png,DesrtMn V4,180,"D
+	",72,Launches fists at enemies!
+50,https://static.wikia.nocookie.net/megaman/images/3/32/MMBN3MChip50.png/revision/latest?cb=20111120225013,MMBN3MChip50.png,Mega_050_PlantMan.png,PlantMan,20,"P
+	",60,Vines harm all enemies!
+51,https://static.wikia.nocookie.net/megaman/images/0/06/MMBN3MChip51.png/revision/latest?cb=20111120225031,MMBN3MChip51.png,Mega_051_PlantMn V2.png,PlantMn V2,30,"P
+	",65,Vines harm all enemies!
+52,https://static.wikia.nocookie.net/megaman/images/e/e5/MMBN3MChip52.png/revision/latest?cb=20111120225047,MMBN3MChip52.png,Mega_052_PlantMn V3.png,PlantMn V3,40,"P
+	",70,Vines harm all enemies!
+53,https://static.wikia.nocookie.net/megaman/images/c/cf/MMBN3MChip53.png/revision/latest?cb=20111120225103,MMBN3MChip53.png,Mega_053_PlantMn V4.png,PlantMn V4,50,"P
+	",75,Vines harm all enemies!
+54,https://static.wikia.nocookie.net/megaman/images/2/20/MMBN3MChip54.png/revision/latest?cb=20111120225126,MMBN3MChip54.png,Mega_054_FlamMan.png,FlamMan,120,"F
+	",32,Flames burn all enemies!
+55,https://static.wikia.nocookie.net/megaman/images/d/d9/MMBN3MChip55.png/revision/latest?cb=20111120225141,MMBN3MChip55.png,Mega_055_FlamMan V2.png,FlamMan V2,150,"F
+	",52,Flames burn all enemies!
+56,https://static.wikia.nocookie.net/megaman/images/6/66/MMBN3MChip56.png/revision/latest?cb=20111120225159,MMBN3MChip56.png,Mega_056_FlamMan V3.png,FlamMan V3,180,"F
+	",62,Flames burn all enemies!
+57,https://static.wikia.nocookie.net/megaman/images/5/5c/MMBN3MChip57.png/revision/latest?cb=20111120225218,MMBN3MChip57.png,Mega_057_FlamMan V4.png,FlamMan V4,210,"F
+	",72,Flames burn all enemies!
+58,https://static.wikia.nocookie.net/megaman/images/5/55/MMBN3MChip58.png/revision/latest?cb=20111120232204,MMBN3MChip58.png,Mega_058_DrillMan.png,DrillMan,70,"D
+	",66,3 drills fly at enemies!
+59,https://static.wikia.nocookie.net/megaman/images/6/65/MMBN3MChip59.png/revision/latest?cb=20111120225259,MMBN3MChip59.png,Mega_059_DrillMn V2.png,DrillMn V2,90,"D
+	",70,3 drills fly at enemies!
+60,https://static.wikia.nocookie.net/megaman/images/f/f8/MMBN3MChip60.png/revision/latest?cb=20111120225316,MMBN3MChip60.png,Mega_060_DrillMn V3.png,DrillMn V3,110,"D
+	",74,3 drills fly at enemies!
+61,https://static.wikia.nocookie.net/megaman/images/7/75/MMBN3MChip61.png/revision/latest?cb=20111120225333,MMBN3MChip61.png,Mega_061_DrillMn V4.png,DrillMn V4,130,"D
+	",78,3 drills fly at enemies!
+62,https://static.wikia.nocookie.net/megaman/images/f/f8/MMBN3MChip62.png/revision/latest?cb=20111120225352,MMBN3MChip62.png,Mega_062_MetalMan.png,MetalMan,100,"M
+	",40,Iron fist smashes 1 square!
+63,https://static.wikia.nocookie.net/megaman/images/e/ea/MMBN3MChip63.png/revision/latest?cb=20111120225408,MMBN3MChip63.png,Mega_063_MetalMn V2.png,MetalMn V2,130,"M
+	",60,Iron fist smashes 1 square!
+64,https://static.wikia.nocookie.net/megaman/images/f/fb/MMBN3MChip64.png/revision/latest?cb=20111120225456,MMBN3MChip64.png,Mega_064_MetalMn V3.png,MetalMn V3,160,"M
+	",70,Iron fist smashes 1 square!
+65,https://static.wikia.nocookie.net/megaman/images/6/69/MMBN3MChip65.png/revision/latest?cb=20111120225512,MMBN3MChip65.png,Mega_065_MetalMn V4.png,MetalMn V4,190,"M
+	",80,Iron fist smashes 1 square!
+66,https://static.wikia.nocookie.net/megaman/images/3/34/MMBN3MChip66.png/revision/latest?cb=20111120225529,MMBN3MChip66.png,Mega_066_KingMan.png,KingMan,140,"K
+	",36,Move up 3 square & 4-way hit
+67,https://static.wikia.nocookie.net/megaman/images/6/61/MMBN3MChip67.png/revision/latest?cb=20111120225546,MMBN3MChip67.png,Mega_067_KingMan V2.png,KingMan V2,170,"K
+	",48,Move up 3 square & 4-way hit
+68,https://static.wikia.nocookie.net/megaman/images/3/3b/MMBN3MChip68.png/revision/latest?cb=20111120225611,MMBN3MChip68.png,Mega_068_KingMan V3.png,KingMan V3,200,"K
+	",60,Move up 3 square & 4-way hit
+69,https://static.wikia.nocookie.net/megaman/images/3/38/MMBN3MChip69.png/revision/latest?cb=20111120225627,MMBN3MChip69.png,Mega_069_KingMan V4.png,KingMan V4,240,"K
+	",72,Move up 3 square & 4-way hit
+70,https://static.wikia.nocookie.net/megaman/images/b/b2/MMBN3MChip70.png/revision/latest?cb=20111120225643,MMBN3MChip70.png,Mega_070_MistMan.png,MistMan,90,"M
+	",68,Appears from mist & attacks
+71,https://static.wikia.nocookie.net/megaman/images/1/16/MMBN3MChip71.png/revision/latest?cb=20111120225658,MMBN3MChip71.png,Mega_071_MistMan V2.png,MistMan V2,110,"M
+	",71,Appears from mist & attacks
+72,https://static.wikia.nocookie.net/megaman/images/f/fd/MMBN3MChip72.png/revision/latest?cb=20111120225714,MMBN3MChip72.png,Mega_072_MistMan V3.png,MistMan V3,130,"M
+	",74,Appears from mist & attacks
+73,https://static.wikia.nocookie.net/megaman/images/2/27/MMBN3MChip73.png/revision/latest?cb=20111120225729,MMBN3MChip73.png,Mega_073_MistMan V4.png,MistMan V4,150,"M
+	",77,Appears from mist & attacks
+74,https://static.wikia.nocookie.net/megaman/images/8/87/MMBN3MChip74.png/revision/latest?cb=20111120225747,MMBN3MChip74.png,Mega_074_BowlMan.png,BowlMan,100,"B
+	",80,Lines up pins for a strike!
+75,https://static.wikia.nocookie.net/megaman/images/8/86/MMBN3MChip75.png/revision/latest?cb=20111120225805,MMBN3MChip75.png,Mega_075_BowlMan V2.png,BowlMan V2,120,"B
+	",82,Lines up pins for a strike!
+76,https://static.wikia.nocookie.net/megaman/images/8/81/MMBN3MChip76.png/revision/latest?cb=20111120225825,MMBN3MChip76.png,Mega_076_BowlMan V3.png,BowlMan V3,140,"B
+	",84,Lines up pins for a strike!
+77,https://static.wikia.nocookie.net/megaman/images/6/66/MMBN3MChip77.png/revision/latest?cb=20111120225841,MMBN3MChip77.png,Mega_077_BowlMan V4.png,BowlMan V4,160,"B
+	",86,Lines up pins for a strike!
+78,https://static.wikia.nocookie.net/megaman/images/e/ea/MMBN3MChip78.png/revision/latest?cb=20111120225857,MMBN3MChip78.png,Mega_078_DarkMan.png,DarkMan,30,"D
+	",72,Creates 3 caves in enmy area
+79,https://static.wikia.nocookie.net/megaman/images/d/d7/MMBN3MChip79.png/revision/latest?cb=20111120225922,MMBN3MChip79.png,Mega_079_DarkMan V2.png,DarkMan V2,30,"D
+	",76,Creates 3 caves in enmy area
+80,https://static.wikia.nocookie.net/megaman/images/1/17/MMBN3MChip80.png/revision/latest?cb=20111120225941,MMBN3MChip80.png,Mega_080_DarkMan V3.png,DarkMan V3,30,"D
+	",80,Creates 3 caves in enmy area
+81,https://static.wikia.nocookie.net/megaman/images/9/95/MMBN3MChip81.png/revision/latest?cb=20111120230001,MMBN3MChip81.png,Mega_081_DarkMan V4.png,DarkMan V4,30,"D
+	",84,Creates 3 caves in enmy area
+82,https://static.wikia.nocookie.net/megaman/images/0/06/MMBN3MChip82.png/revision/latest?cb=20111120230024,MMBN3MChip82.png,Mega_082_JapanMan.png,JapanMan,40,"Y
+	",82,Multiple attacks w/ spear
+83,https://static.wikia.nocookie.net/megaman/images/a/a9/MMBN3MChip83.png/revision/latest?cb=20111120230041,MMBN3MChip83.png,Mega_083_JapanMn V2.png,JapanMn V2,45,"Y
+	",85,Multiple attacks w/ spear
+84,https://static.wikia.nocookie.net/megaman/images/5/54/MMBN3MChip84.png/revision/latest?cb=20111120230127,MMBN3MChip84.png,Mega_084_JapanMn V3.png,JapanMn V3,50,"Y
+	",88,Multiple attacks w/ spear
+85,https://static.wikia.nocookie.net/megaman/images/e/ef/MMBN3MChip85.png/revision/latest?cb=20111120230152,MMBN3MChip85.png,Mega_085_JapanMn V4.png,JapanMn V4,55,"Y
+	",91,Multiple attacks w/ spear
+86,https://static.wikia.nocookie.net/megaman/images/1/10/PunkChip.png/revision/latest?cb=20100324161819,PunkChip.png,Mega_086_Punk.png,Punk,180,"P
+	",92,Spins and smashes enemies!

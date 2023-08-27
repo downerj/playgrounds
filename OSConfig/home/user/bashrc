@@ -1,0 +1,243 @@
+#!/usr/bin/env bash
+
+##########
+# This file is meant for non-login Bash shells (most terminal windows on the
+# desktop).
+#
+# For more aliases, options, commands, &c., consult your distro's default bashrc file.
+##########
+
+# Import POSIX-shell (sh) configurations, including any $PATH additions.
+if [[ -f ~/.profile ]]
+then
+  source ~/.profile
+fi
+
+# If we're not in an interactive shell, then quit here.
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+
+##########
+# ALIASES FOR BUILT-IN PROGRAMS
+##########
+
+# Import variables ANSI TTY formatting colors and codes.
+if [[ -f ~/.bashfmt ]]
+then
+  source ~/.bashfmt
+fi
+
+# Query the user for all multiple-file operations.
+# This should help prevent accidental deletions (rm).
+
+alias rm="/usr/bin/env rm -i"
+#function rm {
+#  /usr/bin/env rm -i $*
+#}
+
+alias cp="/usr/bin/env cp -i"
+#function cp {
+#  /usr/bin/env cp -i $*
+#}
+
+alias mv="/usr/bin/env mv -i"
+#function mv {
+#  /usr/bin/env mv -i $*
+#}
+
+# Use human-readable file sizes when checking free space, disk lists, etc.
+
+alias df="/usr/bin/env df -h"
+#function df {
+#  /usr/bin/env df -h $*
+#}
+
+alias du="/usr/bin/env du -h"
+#function du {
+#  /usr/bin/env du -h $*
+#}
+
+# Display regex searches in color.
+
+alias grep="/usr/bin/env grep --color"
+#function grep {
+#  /usr/bin/env grep --color $*
+#}
+
+alias egrep="/usr/bin/env egrep --color"
+#function egrep {
+#  /usr/bin/env egrep --color $*
+#}
+
+alias egrep="/usr/bin/env fgrep --color"
+#function fgrep {
+#  /usr/bin/env fgrep --color $*
+#}
+
+##########
+# ALIASES FOR LISTING DIRECTORIES
+# See `ls --help` or `man ls` for more details.
+##########
+
+case $(uname -s) in
+  *Linux*)
+    COLOR_OPT="--color=auto"
+    GROUP_OPT="--group-directories-first"
+  ;;
+  *Darwin*)
+    COLOR_OPT="-G"
+    GROUP_OPT=
+  ;;
+esac
+
+# Import file and folder colors.
+case $(uname -s) in
+  *Linux*) 
+    if [[ -f ~/.dircolors ]]
+    then
+      eval $(dircolors ~/.dircolors)
+    fi
+  ;;
+  *Darwin*) 
+    if [[ -f ~/.lscolors-bsd ]]
+    then
+      source ~/.lscolors-bsd
+    fi
+  ;;
+  *BSD*) 
+    if [[ -f ~/.lscolors-bsd ]]
+    then
+      source ~/.lscolors-bsd
+    fi
+  ;;
+esac
+
+# MULTI-COLUMN MODE
+
+# Display only visible files and folders by default.
+alias ls="/usr/bin/env ls -Fx $COLOR_OPT $GROUP_OPT"
+#function ls {
+#  /usr/bin/env ls -Fx $COLOR_OPT $GROUP_OPT $*
+#}
+
+alias lsa="/usr/bin/env ls -AFx $COLOR_OPT $GROUP_OPT"
+# Display all files and folders (including hidden ones).
+#function lsa {
+#  /usr/bin/env ls -AFx $COLOR_OPT $GROUP_OPT $1
+#}
+
+# Display only hidden files and folders.
+#function lsh {
+#  ARG="$1/.*"
+#  if [[ -z $1 ]]
+#  then
+#    ARG=".*"
+#  fi
+#  /usr/bin/env ls -AdFx $COLOR_OPT $GROUP_OPT $ARG
+#}
+
+# ATTRIBUTE-LIST MODE
+
+alias lsl="/usr/bin/env ls -Fho $COLOR_OPT $GROUP_OPT"
+# Display only visible files and folders.
+#function lsl {
+#  /usr/bin/env ls -Fho $COLOR_OPT $GROUP_OPT $1
+#}
+
+alias lsla="/usr/bin/env ls -AFho $COLOR_OPT $GROUP_OPT"
+# Display all files and folders.
+#function lsla {
+#  /usr/bin/env ls -AFho $COLOR_OPT $GROUP_OPT $1
+#}
+
+# Display only hidden files and folders.
+#function lslh {
+#  ARG="$1/.*"
+#  if [[ -z $1 ]]
+#  then
+#    ARG=".*"
+#  fi
+#  /usr/bin/env ls -AdFho $COLOR_OPT $GROUP_OPT $ARG
+#}
+
+# SINGLE-COLUMN MODE
+
+alias lss="/usr/bin/env ls -F1 $COLOR_OPT $GROUP_OPT"
+# Display only visible files and folders.
+#function lss {
+#  /usr/bin/env ls -F1 $COLOR_OPT $GROUP_OPT $1
+#}
+
+alias lssa="/usr/bin/env ls -AF1 $COLOR_OPT $GROUP_OPT"
+# Display all files and folders.
+#function lssa {
+#  /usr/bin/env ls -AF1 $COLOR_OPT $GROUP_OPT $1
+#}
+
+# Display only hidden files and folders.
+#function lssh {
+#  ARG="$1/.*"
+#  if [[ -z $1 ]]
+#  then
+#    ARG=".*"
+#  fi
+#  /usr/bin/env ls -AdF1 $COLOR_OPT $GROUP_OPT $ARG
+#}
+
+##########
+# TERMINAL SETTINGS
+##########
+
+# Set terminal prompt character based on root status ($ vs #).
+if [[ $EUID == 0 ]]
+then
+  PS1_SYM="#"
+  PS1_SYM_COL=$PS1_BY
+else
+  PS1_SYM="$"
+  PS1_SYM_COL=$PS1_BG
+fi
+
+# Terminal prompt
+PS1="$PS1_BY\u $PS1_BC\W $PS1_SYM_COL$PS1_SYM $PS1_X"
+
+unset PS1_SYM
+unset PS1_SYM_COL
+
+# Terminal command: set title on each input line
+PROMPT_COMMAND='THISDIR=$(basename "$PWD"); echo -ne "\x1b]0;$USER@$HOSTNAME:$THISDIR\x07"; unset THISDIR'
+
+# Bash history size settings
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+
+# Don't put duplicate lines or lines starting with space in history.
+export HISTCONTROL=ignoreboth
+
+# Check the window size after each command, and, if necessary, update the
+# values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# The pattern "**" used in a pathname expansion context will match all files
+# and zero or more directories and subdirectories.
+case $(uname -s) in
+  *Linux*) shopt -s globstar ;;
+esac
+
+# Append to the history file; don't overwrite it.
+shopt -s histappend
+
+# Store multi-line command as a single command.
+shopt -s cmdhist
+
+# Expand aliases.
+shopt -s expand_aliases
+
+# Import bash utils (and, by extension, user scripts)
+if [[ -f ~/.bashutils ]]
+then
+  source ~/.bashutils
+fi
+

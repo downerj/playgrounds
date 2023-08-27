@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Tiles" default="build" basedir=".">
+  <property name="dir.dist" value="dist"/>
+  <property name="dir.build" value="build"/>
+  <property name="dir.src" value="src"/>
+
+  <target name="mkdirs">
+    <mkdir dir="${dir.dist}"/>
+    <mkdir dir="${dir.build}"/>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="${dir.dist}" includes="**"/>
+    </delete>
+    <delete>
+      <fileset dir="${dir.build}" includes="**"/>
+    </delete>
+  </target>
+
+  <target name="dist" depends="build">
+    <jar basedir="${dir.build}" destfile="${dir.dist}/Polyominoes.jar">
+      <manifest>
+        <attribute name="Main-Class" value="io.github.ascenderx.Polyominoes.Polyominoes"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="build">
+    <javac srcdir="${dir.src}" destdir="${dir.build}"/>
+  </target>
+</project>

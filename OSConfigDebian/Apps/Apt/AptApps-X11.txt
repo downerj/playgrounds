@@ -1,0 +1,13 @@
+oclock
+xcalc
+xclock
+xditview
+xedit
+xgc
+xlogo
+xmag
+xman
+xmore
+xwd
+xwud
+

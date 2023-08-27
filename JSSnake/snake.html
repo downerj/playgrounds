@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <title>Snake</title>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet"
+            href="src/snake.css" />
+      <meta name="viewport"
+            content="width=device-width, initial-scale=1.25">
+      <!--
+         This code inspired by Gamkedo:
+         https://youtu.be/xGmXxpIj6vs
+       -->
+   </head>
+   <body>
+      <div id="divContent">
+         <div id="menu-link">☰</div>
+         <div id="title">JS Snake</div>
+         <canvas id="gc"
+                 width="300px"
+                 height="300px">
+         </canvas>
+         <div id="submenu">
+            <div class="button"
+                 id="btSound">
+               <input type="checkbox"
+                      id="chkSound" />
+               Enable sound
+            </div>
+            <div class="button">
+               <input type="checkbox"
+                      id="chkExtra" />
+               Show instructions
+            </div>
+            <div class="button">
+               <input type="checkbox"
+                      id="chkScore" />
+               Show current score
+            </div>
+            <div class="button">
+               <input type="checkbox"
+                      id="chkRecent" />
+               Show most recent score
+            </div>
+            <div class="button">
+               <input type="checkbox"
+                      id="chkHScore" />
+               Show high score
+            </div>
+         </div>
+         <br />
+         <div id="divButtons">
+            <table>
+               <!--
+               <tr>
+                  <td></td>
+                  <td>
+                     <button id="btUp">&uarr;</button>
+                  </td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td>
+                     <button id="btLeft">&larr;</button>
+                  </td>
+                  <td>
+                     <button id="btPause">P</button>
+                  </td>
+                  <td>
+                     <button id="btRight">&rarr;</button>
+                  </td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td>
+                     <button id="btDown">&darr;</button>
+                  </td>
+                  <td></td>
+               </tr>
+               -->
+               <button id="btUp">&uarr;</button>
+               <br />
+               <button id="btLeft">&larr;</button>
+               <button id="btPause">P</button>
+               <button id="btRight">&rarr;</button>
+               <br />
+               <button id="btDown">&darr;</button>
+            </table>
+         </div>
+         <label id="lblPaused"></label>
+         <br />
+         <div id="divExtra">
+            <label class="instructions">
+               You are the green snake. You are hungry for apples.<br />
+               Get the red apple to increase your length.<br />
+               Be careful not to run into yourself or the walls or you'll shrink!
+            </label>
+            <br /><br />
+            <label class='key'>A</label> or <label class='key'>&larr;</label> 
+            to move left
+            <br />
+            <label class='key'>D</label> or <label class='key'>&rarr;</label>
+            to move right
+            <br />
+            <label class='key'>W</label> or <label class='key'>&uarr;</label>
+            to move up
+            <br />
+            <label class='key'>S</label> or <label class='key'>&darr;</label>
+            to move down
+            <br />
+            <label class='key'>P</label> or <label class='key'>Pause/Break</label>
+            to pause
+            <br /><br />
+         </div>
+         <div id="divScore">
+            Score: <label id="lblScore"></label>
+         </div>
+         <div id="divRecent">
+            Recent Score: <label id="lblRecent"></label>
+         </div>
+         <div id="divHScore">
+            High Score: <label id="lblHScore"></label>        
+         </div>
+         <label id="lblWrap">WRAP DISABLED</label>
+      </div>
+      <script type="text/javascript" src="src/snake.js"></script>
+   </body>
+</html>

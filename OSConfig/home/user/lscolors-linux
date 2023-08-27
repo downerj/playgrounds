@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+##########
+# NOTE: THE FILE dircolors SHOULD BE USED INSTEAD OF THIS FILE WHEN POSSIBLE.
+##########
+
+##########
+# This file is intended for GNU/Linux and variants.
+# This will set the colors of files, folders, &c when calling `ls`.
+# The full list of currently set LS_COLORS can be found by running:
+#
+# dircolors
+##########
+
+# Import ANSI TTY formatting colors and codes.
+source ~/.bashfmt
+
+# Set the colors here based on the table below.
+# Defaults are used for unset entries.
+declare -A COLOR_LIST=( \
+  [fi]=$_D \
+  [di]=$_BC \
+  [ln]=$_BY \
+)
+
+##########
+# FILE/ENTRY KEY TABLE
+# What each key means in $LS_COLORS.
+#
+# fi  Normal file
+# di  Directory
+# ln  Symbolic link
+# pi  Named pipe
+# do  Door
+# bd  Block device
+# cd  Character device
+# or  Orphan (symbolic link to missing file)
+# so  Socket
+# su  File with setuid (u+s)
+# sg  File with setgid (g+s)
+# tw  Directory that is sticky and other-writable (+t,o+w)
+# ow  Directory that is non-sticky and other-writable (o+w)
+# st  Directory that is sticky and other-unwritable (+t)
+# ex  Executable file (+x)
+# mi  Missing file pointed to by an orphan
+# lc  Opening terminal code
+# rc  Closing terminal code
+# ec  Non-filename text
+#
+# You can also assign custom file extensions, such as "*.jpg=$_BM".
+##########
+
+function _compile_ls_colors {
+  for k in ${!COLOR_LIST[@]}
+  do
+    v=${COLOR_LIST[$k]}
+    echo -n "$k=$v:"
+  done
+}
+
+# Compile the colors
+export LS_COLORS=$(_compile_ls_colors)
+
+unset COLOR_LIST
+unset _compile_ls_colors

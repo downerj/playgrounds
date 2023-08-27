@@ -1,0 +1,21 @@
+# This file is not meant to directly replace /etc/sudoers.
+# Rather, it is meant as a place to store various commands to copy & paste.
+# Consider using /etc/sudoers.d/ instead of directly editing /etc/sudoers; furthermore,
+# make sure to run `sudo visudo` to account for various failure modes.
+# 
+# For more information, consult the manpage (`man sudoers`).
+
+# Reset environment variables and show asterisks on sudo passwords.
+Defaults env_reset,pwfeedback
+
+# Secure binaries
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# User privilege specification
+root ALL=(ALL:ALL) ALL
+
+# Allow members of group sudo to execute any command.
+%sudo ALL=(ALL:ALL) ALL
+
+#includedir /etc/sudoers.d
+

@@ -1,0 +1,11 @@
+# Do not replace the existing /etc/hosts file with this one. Instead, simply
+# copy and paste the contents into the existing file.
+# Always remember to backup system files before modification:
+#   cp /etc/hosts /etc/hosts.bak
+
+# The following are simply examples.
+# Replace the question marks (?) with the appropriate numbers.
+192.168.?.?	acepc-xubuntu
+192.168.?.?	ascender-pi
+192.168.?.?	Chromebook-Xfce
+127.0.0.1	Jamess-Macbook-Pro

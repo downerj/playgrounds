@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# NTFS-3G / OSXFuse: Mount, ensuring files appear in Finder.
+alias mount-ntfs="sudo ntfs-3g -oauto_xattr"
+

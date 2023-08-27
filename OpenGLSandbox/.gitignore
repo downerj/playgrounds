@@ -1,0 +1,12 @@
+# Compliation output subdirectories
+**/*obj
+**/*obj/*
+**/bin
+**/bin/*
+
+# VSCode configuration settings
+**/.vscode
+**/.vscode/*
+
+# MacOS metadata
+**/.DS_Store

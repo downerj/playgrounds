@@ -1,0 +1,9 @@
+# Arduino IDE (and basic CLI)
+https://www.arduino.cc/en/software
+
+# Arduino basic CLI manpage
+https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
+
+# Arduboy simulator
+https://github.com/dxxb/sim-arduboy
+

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Prompt colors.
+red="\[\e[1;31m\]"
+green="\[\e[1;32m\]"
+yellow="\[\e[1;33m\]"
+blue="\[\e[1;34m\]"
+magenta="\[\e[1;35m\]"
+cyan="\[\e[1;36m\]"
+white="\[\e[1;37m\]"
+teal="\[\e[1;38;2;0;255;128m\]"
+default="\[\e[1;39m\]"
+reset="\[\e[0m\]"
+
+# Colorize the prompt.
+shellstr="$teal""bash"
+userstr="$yellow""\u"
+hoststr="$blue""@""$red""\h""$blue"":"
+dirstr="$cyan""\w"
+symstr="$green""\$"
+#char=$(echo -e "\u2588") # Block
+#char=$(echo -e "\u00bb") # Right double chevron
+char=">"
+blockcolors=($magenta $red $yellow $green $cyan $blue)
+blockstr=""
+for color in ${blockcolors[@]}
+do
+  blockstr="$blockstr$color$char"
+done
+
+PS1="$shellstr $userstr$hoststr$dirstr\n$blockstr$reset "
+PS2="$green>$reset "
+
+unset red green yellow blue magenta cyan white teal default reset
+unset shellstr userstr hoststr dirstr symstr char block blockcolors blockstr
+
+# Set the terminal command to update the title on each line.
+PROMPT_COMMAND='thisdir=$(basename "$PWD"); echo -ne "\e]0;$USER@$HOSTNAME:$thisdir\x07"; unset thisdir'
+

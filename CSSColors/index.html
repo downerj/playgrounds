@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Color Selector</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#000000"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  </head>
+  <body>
+    <div class="meta-container">
+      <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="controls-container">
+        <table>
+          <tbody>
+            <tr>
+              <td>Color</td>
+              <td colspan="2">
+                <select id="cssColorDropdown"></select>
+              </td>
+            </tr>
+            <tr>
+              <td>Hex</td>
+              <td colspan="2"><input type="text" id="rgbHexInput"/></td>
+            </tr>
+            <tr>
+              <td>Red</td>
+              <td><input type="range" id="redInput"/></td>
+              <td><label id="redLabel"></label></td>
+            </tr>
+            <tr>
+              <td>Green</td>
+              <td><input type="range" id="greenInput"/></td>
+              <td><label id="greenLabel"></label></td>
+            </tr>
+            <tr>
+              <td>Blue</td>
+              <td><input type="range" id="blueInput"/></td>
+              <td><label id="blueLabel"></label></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <script src="csscolors.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

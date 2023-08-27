@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Enable keyboard
+Comment=
+Exec=xinput reattach 11 3
+Icon=input-keyboard
+Path=
+Terminal=false
+StartupNotify=false

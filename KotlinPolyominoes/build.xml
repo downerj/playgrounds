@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Ant Task Test" default="build" basedir=".">
+  <!-- Modify the following property to point to the `lib` folder for the Kotlin complier. -->
+  <!--<property name="kotlin.lib" value="/usr/local/Cellar/kotlin/1.3.61/libexec/lib"/>-->
+  <property name="kotlin.lib" value="/usr/lib/kotlinc/lib"/>
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlin.lib}/kotlin-ant.jar"/>
+
+  <property name="dir.build" value="build"/>
+  <property name="dir.src" value="src"/>
+  <property name="file.build" value="Polyominoes.jar"/>
+
+<target name="mkdirs">
+    <mkdir dir="${dir.build}"/>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="${dir.build}" includes="**"/>
+    </delete>
+  </target>
+
+  <target name="build">
+    <kotlinc src="${dir.src}" output="${dir.build}/${file.build}"/>
+  </target>
+</project>

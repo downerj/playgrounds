@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Invert colors
+Comment=
+Exec=xcalib -i -a
+Icon=preferences-color
+Path=
+Terminal=false
+StartupNotify=false

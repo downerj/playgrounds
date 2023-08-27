@@ -1,0 +1,32 @@
+# Copy all *.ttf files to $HOME/.fonts/.
+
+# From Google Fonts (https://fonts.google.com):
+Anonymous Pro
+Fira Mono
+Noto Sans Mono
+Source Code Pro
+Ubuntu
+Ubuntu Mono
+IBM Plex Mono
+
+# https://sourceforge.net/projects/cm-unicode
+Computer Modern Unicode
+
+# https://www.jetbrains.com/lp/mono/
+JetBrains Mono
+
+# sudo apt install xfonts-terminus
+Terminus
+
+# https://github.com/belluzj/fantasque-sans
+Fantasque Sans Mono
+
+# https://github.com/microsoft/cascadia-code/releases 
+Cascadia Code
+
+# https://larsenwork.com/monoid/
+Monoid
+
+# https://github.com/i-tu/Hasklig/ 
+Hasklig
+

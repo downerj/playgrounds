@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+##########
+# This file is intended for the ChromeOS/Crosh side of Crouton.
+##########
+
+DISTRO="buster"
+DESKENV="xfce4"
+
+# Boot Crouton distro in terminal/CLI mode.
+function gnu {
+  sudo enter-chroot -n $DISTRO
+}
+
+# Boot Crouton distro in full GUI mode.
+function gnux {
+  sudo start$DESKENV -X xorg
+}
+
+# Boot Crouton distro in XIWI tab.
+function gnuw {
+  sudo start$DESKENV -X xiwi
+}
+
+# Inside chroot: create a new ChromeOS tab with app GUI.
+function cr-gui {
+  xiwi $* &> /dev/null &
+}
+
+# Disable keyboard in Xorg
+function kb-disable {
+  xinput float 11
+}
+
+# Enable keyboard in Xorg
+# Note: Run xinput list to find device IDs
+function kb-enable {
+  xinput reattach 11 3
+}

@@ -1,0 +1,45 @@
+#!/usr/bin/env tcsh
+
+##########
+# This file is intended for the TENEX C Shells (tcsh).
+##########
+
+# Set file creation mask.
+# Each set bit is an unset flag for each new file.
+# Example: umask 022 means chmod go-w.
+umask 022
+
+# Set $PATH so that it includes the user's private binaries, if the
+# directory exists.
+if ( -d "$HOME/.local/bin" ) then
+  setenv PATH="$HOME/.local/bin:$PATH"
+endif
+
+# Test for an interactive shell.
+if (! $?prompt) then
+  # Shell is non-interactive. Finish and return.
+  exit
+endif
+
+if ( -f "$HOME/.tcsh_aliases" ) then
+  source $HOME/.tcsh_aliases
+endif
+
+# List directories in color, directories first.
+set color
+if ( -f "$HOME/.dircolors" ) then
+  eval `dircolors -c $HOME/.dircolors`
+endif
+
+if ( -f "$HOME/.tcsh_prompt" ) then
+  source $HOME/.tcsh_prompt
+endif
+
+# History size settings.
+setenv HISTSIZE 1000
+setenv HISTFILESIZE 2000
+
+# Don't put duplicate lines or lines starting with spaces in the
+# history.
+setenv HISTCONTROL ignoreboth
+

@@ -1,0 +1,5 @@
+# Arduino binaries
+**/*.hex
+
+# VSCode settings
+.vscode

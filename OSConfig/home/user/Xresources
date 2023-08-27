@@ -1,0 +1,13 @@
+/**
+ * This file is meant for XTerm. Most other terminals (including variants and
+ * derivatives of XTerm) use their own config files instead.
+ * 
+ * When first adding and then later changing this file, always finish
+ * by running:
+ *
+ * xrdb -merge ~/.Xresources
+ */
+
+XTerm*font: *-terminus-*-*-*-15-*
+XTerm*boldFont: *-terminus-*-*-*-15-*
+XTerm:allowBoldFonts: false

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Set Lynx homepage to DuckDuckGo Lite
+export WWW_HOME="https://ddg.gg/lite"
+
+# CLI mode: check battery
+# TODO: Needs update for Manjaro, &c.
+#function battery {
+#  upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -B1 percentage
+#}
+

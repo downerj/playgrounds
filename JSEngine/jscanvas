@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pushd bin > /dev/null
+java JSCanvas $1
+popd > /dev/null

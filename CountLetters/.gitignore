@@ -1,0 +1,23 @@
+##########
+# All
+##########
+# Zed code editor files
+**/.zedstate
+# Visual Studio Code files
+**/.vscode
+
+##########
+# C, C++
+##########
+# Output binaries
+**/bin/
+
+# Resource content, including words file
+**/res/
+
+##########
+# Node
+##########
+**/package-lock.json
+**/node_modules
+

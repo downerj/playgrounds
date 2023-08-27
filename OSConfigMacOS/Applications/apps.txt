@@ -1,0 +1,23 @@
+Android Studio
+Apahce Ant (via Homebrew)
+Audacity
+GIMP
+Google Chrome
+Heaven & Earth (for Mac OS 9)
+Homebrew
+J2V8
+JDK 8 (for Minecraft older versions)
+JDK (newest)
+Keka
+LAME (for Audacity)
+LibreOffice
+Macintosh Programmer's Workshop (for Mac OS 9)
+NodeJS
+OSX Fuse
+Python 3
+QEMU (via Homebrew)
+SheepShaver
+SSHFS
+VirtualBox
+Xcode
+XQuartz

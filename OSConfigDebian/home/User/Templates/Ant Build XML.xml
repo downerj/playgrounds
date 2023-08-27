@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="" default="build" basedir=".">
+  <property name="dir.dist" value="dist"/>
+  <property name="dir.build" value="build"/>
+  <property name="dir.src" value="src"/>
+  <property name="name.domain" value="io.github.ascenderx"/>
+  <property name="name.app" value=""/>
+  <property name="name.package.main" value=""/>
+  <property name="name.class.main" value=""/>
+
+  <target name="mkdirs">
+    <mkdir dir="${dir.dist}"/>
+    <mkdir dir="${dir.build}"/>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="${dir.dist}" includes="**"/>
+    </delete>
+    <delete>
+      <fileset dir="${dir.build}" includes="**"/>
+    </delete>
+  </target>
+
+  <target name="dist" depends="build">
+    <jar basedir="${dir.build}" destfile="${dir.dist}/${name.app}.jar">
+      <manifest>
+        <attribute name="Main-Class"
+          value="${name.domain}.${name.package.main}.${name.class.main}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="build">
+    <javac srcdir="${dir.src}" destdir="${dir.build}"/>
+  </target>
+</project>
+

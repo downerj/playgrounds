@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+
+##########
+# ANSI TTY CONTROL CODES
+# Notes:
+#   + "\e" <=> "\033" <=> "\x1b"
+##########
+
+# Control Sequence Indicator
+CSI="\033["
+
+# Reset to Initial State
+# + XTerm: Clear screen & scrollback
+# + Non-XTerm: Only clear screen
+RIS="\033c"
+
+# Erase in Display ("3" clears entire screen + scrollback buffer)
+ED="$CSI""3J"
+
+##########
+# ANSI TTY COLOR CODES
+# Notes:
+#   + Bold colors are often displayed as lighter, hence the dark/light
+#     naming schemes.
+##########
+
+_DARK=0
+_LIGHT=1
+
+_K="$_DARK;30"
+_R="$_DARK;31"
+_G="$_DARK;32"
+_Y="$_DARK;33"
+_B="$_DARK;34"
+_M="$_DARK;35"
+_C="$_DARK;36"
+_W="$_DARK;37"
+_D="$_DARK;39"
+
+_BK="$_LIGHT;30"
+_BR="$_LIGHT;31"
+_BG="$_LIGHT;32"
+_BY="$_LIGHT;33"
+_BB="$_LIGHT;34"
+_BM="$_LIGHT;35"
+_BC="$_LIGHT;36"
+_BW="$_LIGHT;37"
+_BD="$_LIGHT;39"
+
+BLACK="$CSI$_K""m"
+RED="$CSI$_R""m"
+GREEN="$CSI$_G""m"
+YELLOW="$CSI$_Y""m"
+BLUE="$CSI$_B""m"
+MAGENTA="$CSI$_M""m"
+CYAN="$CSI$_C""m"
+WHITE="$CSI$_W""m"
+DEFAULT="$CSI$_D""m"
+
+B_BLACK="$CSI$_BK""m"
+B_RED="$CSI$_BR""m"
+B_GREEN="$CSI$_BG""m"
+B_YELLOW="$CSI$_BY""m"
+B_BLUE="$CSI$_BB""m"
+B_MAGENTA="$CSI$_BM""m"
+B_CYAN="$CSI$_BC""m"
+B_WHITE="$CSI$_BW""m"
+B_DEFAULT="$CSI$_BD""m"
+
+##########
+# ANSI TTY FORMATTING CODES
+##########
+
+_RESET=0
+_UNDERLINE=4
+_BLINK=5
+_INVERT=7
+_CONCEAL=8
+
+RESET="$CSI$_RESET""m"
+UNDERLINE="$CSI$_UNDERLINE""m"
+BLINK="$CSI$_BLINK""m"
+INVERT="$CSI$_INVERT""m"
+CONCEAL="$CSI$_CONCEAL""m"
+
+##########
+# CLEAR TTY WINDOW AND SCROLLBACK
+# Notes:
+# + Clearing on certain terminals can be performed as follows:
+#   - Terminal.app (macOS): Cmd+K
+#   - QTerminal (LXQt): Ctrl+Shift+X
+#   - Crosh (ChromeOS): Ctrl+Shift+K Ctrl+L
+##########
+
+function clearf {
+  echo -ne "$RIS$ED"
+}
+
+#function clear {
+#  FORCED=
+#
+#  for ARG in "$@"
+#  do
+#    case $ARG in
+#      "-f")
+#        FORCED=1
+#        ;;
+#      *)
+#        echo "Invalid argument \"$ARG\""
+#        return
+#        ;;
+#    esac
+#  done
+#
+#  # If forced...
+#  if [[ ! -z $FORCED ]]
+#  then
+#    # Clear scrollback as well
+#    echo -ne "$RIS$ED"
+#  # If not forced...
+#  else
+#    # Do not clear scrollback
+#    echo -ne "$RIS"
+#  fi
+#}
+
+##########
+# BASH PROMPT: ANSI TTY COLOR CODES
+##########
+
+PS1_K="\[$BLACK\]"
+PS1_R="\[$RED\]"
+PS1_G="\[$GREEN\]"
+PS1_Y="\[$YELLOW\]"
+PS1_B="\[$BLUE\]"
+PS1_M="\[$MAGENTA\]"
+PS1_C="\[$CYAN\]"
+PS1_W="\[$WHITE\]"
+PS1_D="\[$DEFAULT\]"
+
+PS1_BK="\[$B_BLACK\]"
+PS1_BR="\[$B_RED\]"
+PS1_BG="\[$B_GREEN\]"
+PS1_BY="\[$B_YELLOW\]"
+PS1_BB="\[$B_BLUE\]"
+PS1_BM="\[$B_MAGENTA\]"
+PS1_BC="\[$B_CYAN\]"
+PS1_BW="\[$B_WHITE\]"
+PS1_BD="\[$B_DEFAULT\]"
+
+##########
+# BASH PROMPT: ANSI TTY FORMATTING CODES
+##########
+
+PS1_U="\[$UNDERLINE\]"
+PS1_L="\[$BLINK\]"
+PS1_I="\[$INVERT\]"
+PS1_X="\[$RESET\]"

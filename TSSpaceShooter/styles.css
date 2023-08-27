@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+  color: white;
+}
+
+.game-screen {
+  border: 1px solid white;
+  position: absolute;
+  --screen-width: calc(16px * 20);
+  --screen-height: calc(16px * 24);
+  width: var(--screen-width);
+  height: var(--screen-height);
+  left: calc(50% - var(--screen-width)/2);
+  top: calc(50% - var(--screen-height)/2);
+}

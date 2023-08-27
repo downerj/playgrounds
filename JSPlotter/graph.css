@@ -1,0 +1,43 @@
+body
+{
+   background-color: #000000;
+   color: #ffffff;
+}
+
+canvas
+{
+   border: 1px solid #afafaf;
+}
+
+textarea
+{
+   width: 400px;
+   height: 390px;
+   resize: none;
+   font-family: 'Menlo', 'Consolas', monospace;
+   font-size: 12px;
+   border: 1px solid #00afff;
+   background-color: #000000;
+   color: #00afff;
+}
+
+textarea:focus, textarea:hover
+{
+   background-color: #000f1f;
+}
+
+button
+{
+   font-family: 'Trebuchet MS', 'Helvetica', sans-serif;
+   font-size: 16px;
+   background-color: #000000;
+   color: #ff7f00;
+   border: 1px solid #ff7f00;
+   width: 402px;
+}
+
+button:hover, button:focus
+{
+   color: #000000;
+   background-color: #ff7f00;
+}

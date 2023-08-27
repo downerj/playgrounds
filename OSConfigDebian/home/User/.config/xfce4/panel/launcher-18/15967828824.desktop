@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Disable keyboard
+Comment=
+Exec=xinput float 11
+Icon=input-keyboard
+Path=
+Terminal=false
+StartupNotify=false
