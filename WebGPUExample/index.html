@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#000000"/>
+    <title>WebGPU Shaders</title>
+    <link rel="shortcut icon" href="favicon.png"/>
+    <style>
+      html {
+        height: calc(100% - 10px);
+      }
+
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: black;
+      }
+
+      .drawing-area {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="animate.js"></script>
+    <script type="module" src="graphics.js"></script>
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <div class="drawing-area">
+      <canvas id="canvas"></canvas>
+    </div>
+  </body>
+</html>
