@@ -1,6 +1,0 @@
-# Node modules & files.
-**/node_modules
-**/package-lock.json
-
-# GLSL shader source files.
-shaders
