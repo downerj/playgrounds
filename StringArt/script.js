@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const resizeCanvas = () => {
     cvs.width = cvs.parentElement.clientWidth;
     cvs.height = cvs.parentElement.clientHeight;
-    ctx.setTransform(cvs.width/100, 0, 0, -cvs.height/100, 0, cvs.height);
   };
 
   /**
    *
    */
   const redraw = () => {
+    ctx.setTransform(cvs.width/100, 0, 0, -cvs.height/100, 0, cvs.height);
     ctx.clearRect(0, 0, cvs.clientWidth, cvs.clientHeight);
     const numLines = 20;
     const offset = 50/numLines;
