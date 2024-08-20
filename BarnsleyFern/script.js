@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, cvs.width, cvs.height);
     ctx.setTransform(cvs.width/12, 0, 0, -cvs.height/12, cvs.width/2, cvs.height);
-    ctx.fillStyle = 'red';
-    const maxIterations = 100000;
+    const maxIterations = 400000;
     for (
       let x = 0, y = 0, t = 0, xn = 0, yn = 0;
       t < maxIterations;
@@ -54,6 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         xn = -.15*x + .28*y;
         yn = .26*x + .24*y + .44;
       }
+      const xc = xn;
+      const yc = yn - 6;
+      const hue = Math.sqrt(xc*xc + yc*yc)*60;
+      ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
       ctx.fillRect(xn, yn, .01, .01);
     }
   };
