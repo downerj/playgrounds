@@ -1,0 +1,8 @@
+# C++ output
+**/*.o
+**/*.oo
+**/iife
+
+# Java output
+**/*.class
+**/*.jar
