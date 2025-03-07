@@ -1,0 +1,11 @@
+# C++ output
+**/*.o
+**/**.oo
+**/abstract
+
+# Java output
+**/*.class
+**/*.jar
+
+# VS Code files
+**/.vscode
