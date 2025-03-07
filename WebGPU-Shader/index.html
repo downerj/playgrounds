@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#000000"/>
+    <title>WebGPU Shaders</title>
+    <link rel="shortcut icon" href="favicon.png"/>
+    <style>
+      html {
+        height: calc(100% - 10px);
+      }
+
+      body {
+        height: 100%;
+        margin: 0;
+        background-color: black;
+      }
+
+      .drawing-area {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="animate.js"></script>
+    <script type="module" src="graphics.js"></script>
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <div class="drawing-area">
+      <canvas id="canvas"></canvas>
+      <script id="wgsl-shaders" type="text/wgsl">
+struct VertexOut {
+  @builtin(position) position : vec4f,
+  @location(0) color : vec4f
+}
+
+@vertex
+fn vertex_main(@location(0) position: vec4f, @location(1) color: vec4f) -> VertexOut {
+  var output: VertexOut;
+  output.position = position;
+  output.color = color;
+  return output;
+}
+
+@fragment
+fn fragment_main(fragData: VertexOut) -> @location(0) vec4f {
+  return fragData.color;
+}
+      </script>
+    </div>
+  </body>
+</html>
