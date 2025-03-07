@@ -1,0 +1,94 @@
+##########
+# This file is intended for BSD and variants, including macOS.
+# This will set the colors of files, folders, &c when calling `ls`.
+# The full list of currently set LSCOLORS can be found by running:
+#
+# echo $LSCOLORS
+##########
+
+##########
+# BSD and macOS lscolor codes
+##########
+BSD_K="a"
+BSD_R="b"
+BSD_G="c"
+BSD_Y="d"
+BSD_B="e"
+BSD_M="f"
+BSD_C="g"
+BSD_W="h"
+BSD_BK="A"
+BSD_BR="B"
+BSD_BG="C"
+BSD_BY="D"
+BSD_BB="E"
+BSD_BM="F"
+BSD_BC="G"
+BSD_BW="H"
+BSD_D="x"
+
+# Set the colors here based on the table below.
+# Each entry has a foreground and a background color, set in that order.
+# All the entries must be set.
+declare -a COLOR_LIST=( \
+  "$BSD_BC$BSD_D" #di \
+  "$BSD_BY$BSD_D" #ln \
+  "$BSD_BG$BSD_D" #so \
+  "$BSD_BY$BSD_D" #pi \
+  "$BSD_BG$BSD_D" #ex \
+  "$BSD_BY$BSD_D" #bd \
+  "$BSD_BY$BSD_D" #cd \
+  "$BSD_BW$BSD_R" #su \
+  "$BSD_BW$BSD_R" #sg \
+  "$BSD_BK$BSD_G" #tw \
+  "$BSD_BK$BSD_G" #ow \
+)
+
+##########
+# File/entry key table
+# What each key means in $COLOR_LIST.
+# Notes:
+#   + The keys are assigned in the following order.
+#
+# di  Directory
+# ln  Symbolic link
+# so  Socket
+# pi  Named pipe
+# ex  Executable file (+x)
+# bd  Block device
+# cd  Character device
+# su  Executable file with setuid (u+s)
+# sg  Executable file with setgid (g+s)
+# tw  Directory that is sticky and other-writable (+t,o+w)
+# ow  Directory that is non-sticky and other-writable (o+w)
+##########
+
+function _compile_ls_colors {
+  for c in ${COLOR_LIST[@]}
+  do
+    echo -n $c
+  done
+}
+
+# Compile the colors
+export LSCOLORS=$(_compile_ls_colors)
+
+unset COLOR_LIST
+unset _compile_ls_colors
+unset BSD_K
+unset BSD_R
+unset BSD_G
+unset BSD_Y
+unset BSD_B
+unset BSD_M
+unset BSD_C
+unset BSD_W
+unset BSD_BK
+unset BSD_BR
+unset BSD_BG
+unset BSD_BY
+unset BSD_BB
+unset BSD_BM
+unset BSD_BC
+unset BSD_BW
+unset BSD_D
