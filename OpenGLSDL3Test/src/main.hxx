@@ -1,3 +1,6 @@
+#ifndef MAIN_HXX
+#define MAIN_HXX
+
 #include <glad/gl.h>
 
 #include <SDL3/SDL.h>
@@ -7,19 +10,6 @@
 /**
  * Declarations.
  */
-
-#ifdef _DEBUG
-# define DEBUG
-#endif // _DEBUG
-
-#ifdef DEBUG
-#include <iostream>
-# define LOG(x) do { std::cout << x; } while (false);
-# define LOG_ERROR(x) do { std::cerr << x; } while (false);
-#else
-# define LOG(x)
-# define LOG_ERROR(x)
-#endif // DEBUG
 
 namespace {
 
@@ -54,3 +44,5 @@ auto SDL_AppInit(void** appState, int argc, char** argv) -> SDL_AppResult;
 auto SDL_AppIterate(void* appState) -> SDL_AppResult;
 auto SDL_AppEvent(void* appState, SDL_Event* event) -> SDL_AppResult;
 auto SDL_AppQuit(void* appState, SDL_AppResult result) -> void;
+
+#endif // MAIN_HXX

@@ -3,6 +3,8 @@
 #define GLAD_GL_IMPLEMENTATION
 #include <glad/gl.h>
 
+#include "debug.hxx"
+
 /**
  * Defintions.
  */
@@ -77,7 +79,6 @@ auto SDL_AppEvent(void*, SDL_Event* event) -> SDL_AppResult {
       return SDL_APP_SUCCESS;
     case SDL_EVENT_WINDOW_RESIZED:
     case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
-      // LOG("Window was resized!\n");
       break;
     case SDL_EVENT_KEY_DOWN: {
       SDL_Keymod mods{SDL_GetModState()};
