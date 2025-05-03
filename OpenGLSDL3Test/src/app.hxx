@@ -13,8 +13,8 @@ public:
   Application& operator=(Application&&) = delete;
   ~Application();
 
-  auto onIterate() -> void;
-  auto onEvent(SDL_Event* event) -> bool;
+  auto handleEvents() -> bool;
+  auto render() -> void;
 
 private:
   SDL_Window* _window{nullptr};

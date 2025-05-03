@@ -81,7 +81,28 @@ Application::~Application() {
   SDL_GL_DestroyContext(_context);
 }
 
-auto Application::onIterate() -> void {
+auto Application::handleEvents() -> bool {
+  SDL_Event event;
+  while (SDL_PollEvent(&event)) {
+    switch (event.type) {
+      case SDL_EVENT_QUIT:
+        return false;
+      case SDL_EVENT_WINDOW_RESIZED:
+      case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+        break;
+      case SDL_EVENT_KEY_DOWN: {
+        SDL_Keymod mods{SDL_GetModState()};
+        if (mods & SDL_KMOD_CTRL && event.key.scancode == SDL_SCANCODE_Q) {
+          return false;
+        }
+      }
+    }
+  }
+
+  return true;
+}
+
+auto Application::render() -> void {
   int w;
   int h;
   SDL_GetWindowSize(_window, &w, &h);
@@ -89,23 +110,6 @@ auto Application::onIterate() -> void {
   glClearColor(0.f, .8f, 1.f, 1.f);
   glClear(GL_COLOR_BUFFER_BIT);
   SDL_GL_SwapWindow(_window);
-}
-
-auto Application::onEvent(SDL_Event* event) -> bool {
-  switch (event->type) {
-    case SDL_EVENT_QUIT:
-      return false;
-    case SDL_EVENT_WINDOW_RESIZED:
-    case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
-      break;
-    case SDL_EVENT_KEY_DOWN: {
-      SDL_Keymod mods{SDL_GetModState()};
-      if (mods & SDL_KMOD_CTRL && event->key.scancode == SDL_SCANCODE_Q) {
-        return false;
-      }
-    }
-  }
-  return true;
 }
 
 namespace {
