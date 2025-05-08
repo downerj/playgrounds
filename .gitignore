@@ -8,3 +8,6 @@
 **/*~
 **/.*~
 
+# Binary & object folders
+**/bin/
+**/obj/
