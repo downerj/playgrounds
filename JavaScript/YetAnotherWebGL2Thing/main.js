@@ -1,25 +1,6 @@
+import { SimpleTriangle } from "./geometry.js";
+import { Graphics3D } from "./graphics.js";
 import { setFramerateTimer } from "./timer.js";
-
-/**
- * @param {HTMLCanvasElement} canvas
- * @returns {WebGL2RenderingContext}
- */
-const init = (canvas) => {
-  const gl = canvas.getContext('webgl2');
-  if (!gl) {
-    throw 'Unable to get WebGL2 context';
-  }
-  return gl;
-};
-
-/**
- * @param {WebGL2RenderingContext} gl
- */
-const render = (gl) => {
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-  gl.clearColor(0., .7, 1., 1.);
-  gl.clear(gl.COLOR_BUFFER_BIT);
-};
 
 /**
  * @param {HTMLCanvasElement} canvas
@@ -36,8 +17,9 @@ document.addEventListener('DOMContentLoaded', (_event) => {
   const canvas = document.getElementById('cvs');
   window.addEventListener('resize', (_event) => resizeCanvas(canvas));
   resizeCanvas(canvas);
-  const gl = init(canvas);
+  const gfx = new Graphics3D(canvas);
+  gfx.addObject(new SimpleTriangle());
   setFramerateTimer((_timestamp) => {
-    render(gl);
+    gfx.render();
   }, 1000/30);
 });
