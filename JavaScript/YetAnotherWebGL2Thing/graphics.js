@@ -15,7 +15,7 @@ class VertexArrayInfo {
   #indexCount;
 
   /**
-   * 
+   *
    * @param {WebGLVertexArrayObject} vertexArray
    * @param {GLenum} drawMode
    * @param {number} indexCount
@@ -41,7 +41,7 @@ class VertexArrayInfo {
 
 export class Graphics3D {
   /**
-   * @param {HTMLCanvasElement} canvas 
+   * @param {HTMLCanvasElement} canvas
    */
   constructor(canvas) {
     this.#gl = canvas.getContext('webgl2');
@@ -89,7 +89,7 @@ export class Graphics3D {
   }
 
   /**
-   * 
+   *
    */
   render() {
     const gl = this.#gl;

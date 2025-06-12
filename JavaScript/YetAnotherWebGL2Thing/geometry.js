@@ -17,7 +17,7 @@ export class SimpleTriangle extends Geometry {
   get vertices() {
     return this.#vertices
   }
-  
+
   #colors = new Float32Array([
     // Bottom left
     // Red
