@@ -35,8 +35,7 @@ export class SimpleTriangle extends Geometry {
   }
 
   #indices = new Uint16Array([
-    0, 1, 2,
-    0, 2, 3
+    0, 1, 2
   ]);
 
   get indices() {

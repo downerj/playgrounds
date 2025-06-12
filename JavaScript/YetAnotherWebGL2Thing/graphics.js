@@ -101,7 +101,7 @@ export class Graphics3D {
       gl.bindVertexArray(vaoInfo.vertexArray);
       gl.drawElements(
         vaoInfo.drawMode,
-        vaoInfo.indexCount/2,
+        vaoInfo.indexCount,
         gl.UNSIGNED_SHORT,
         0
       );
