@@ -15,7 +15,7 @@ export class SimpleTriangle extends Geometry {
   ]);
 
   get vertices() {
-    return this.#vertices
+    return this.#vertices;
   }
 
   #colors = new Float32Array([
@@ -31,7 +31,7 @@ export class SimpleTriangle extends Geometry {
   ]);
 
   get colors() {
-    return this.#colors
+    return this.#colors;
   }
 
   #indices = new Uint16Array([
