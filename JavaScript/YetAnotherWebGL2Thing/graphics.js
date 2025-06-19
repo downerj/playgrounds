@@ -94,9 +94,13 @@ export class Graphics3D {
   render() {
     const gl = this.#gl;
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+    gl.enable(gl.DEPTH_TEST);
     gl.clearColor(0., .7, 1., 1.);
-    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.useProgram(this.#program);
+    gl.enable(gl.CULL_FACE);
+    gl.cullFace(gl.BACK);
+    gl.frontFace(gl.CCW);
     for (const vaoInfo of this.#vertexArrayInfos) {
       gl.bindVertexArray(vaoInfo.vertexArray);
       gl.drawElements(
