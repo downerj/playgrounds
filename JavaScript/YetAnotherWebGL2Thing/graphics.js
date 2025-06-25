@@ -1,4 +1,9 @@
+import * as glMatrix from "./include/gl-matrix/index.js";
 import { Geometry } from "./geometry.js";
+
+const { mat4, vec3 } = glMatrix;
+
+const DEG_TO_RAD = Math.PI/180.;
 
 class ProgramInfo {
   /**
@@ -8,6 +13,43 @@ class ProgramInfo {
    */
   constructor(gl, vertexSource, fragmentSource) {
     this.#gl = gl;
+    this.#program = this.#createProgram(vertexSource, fragmentSource);
+    for (const key in this.#uniformLocations) {
+      this.#uniformLocations[key] = gl.getUniformLocation(this.#program, key);
+    }
+  };
+
+  get program() {
+    return this.#program;
+  }
+
+  get uniformLocations() {
+    return this.#uniformLocations;
+  }
+
+  /**
+   * @type {WebGL2RenderingContext}
+   */
+  #gl;
+  /**
+   * @type {WebGLProgram}
+   */
+  #program;
+  /**
+   * @type {{[name: string]: number}}
+   */
+  #uniformLocations = {
+    uProjection: -1,
+    uView: -1,
+    uModel: -1
+  };
+
+  /**
+   * @param {string} vertexSource
+   * @param {string} fragmentSource
+   */
+  #createProgram(vertexSource, fragmentSource) {
+    const gl = this.#gl;
     const vertexShader = this.#createShader(gl.VERTEX_SHADER, vertexSource);
     const fragmentShader = this.#createShader(gl.FRAGMENT_SHADER, fragmentSource);
     const program = gl.createProgram();
@@ -35,26 +77,8 @@ class ProgramInfo {
       gl.deleteProgram(program);
       throw 'Failed to create WebGL2 program';
     }
-    this.#program = program;
-  };
-
-  get program() {
-    return this.#program;
+    return program;
   }
-
-  useProgram() {
-    const gl = this.#gl;
-    gl.useProgram(this.#program);
-  }
-
-  /**
-   * @type {WebGL2RenderingContext}
-   */
-  #gl;
-  /**
-   * @type {WebGLProgram}
-   */
-  #program;
 
   /**
    * @param {GLenum} type
@@ -166,13 +190,31 @@ export class Graphics3D {
     const gl = this.#gl;
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
     gl.clearColor(0., .7, 1., 1.);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    this.#programInfo.useProgram();
     gl.enable(gl.CULL_FACE);
     gl.cullFace(gl.BACK);
     gl.frontFace(gl.CCW);
+
+    const { program, uniformLocations } = this.#programInfo;
+    gl.useProgram(program);
+
+    const fovy = 60;
+    const aspect = gl.canvas.height / gl.canvas.width;
+    mat4.identity(this.#projectionMatrix);
+    mat4.perspective(this.#projectionMatrix, fovy*DEG_TO_RAD, aspect, 0.1, Infinity);
+    gl.uniformMatrix4fv(uniformLocations.uProjection, false, this.#projectionMatrix);
+    mat4.identity(this.#viewMatrix);
+    mat4.rotateX(this.#viewMatrix, this.#viewMatrix, this.#eyeRotX*DEG_TO_RAD);
+    mat4.rotateY(this.#viewMatrix, this.#viewMatrix, this.#eyeRotY*DEG_TO_RAD);
+    mat4.rotateZ(this.#viewMatrix, this.#viewMatrix, this.#eyeRotZ*DEG_TO_RAD);
+    mat4.translate(this.#viewMatrix, this.#viewMatrix, this.#eyeVec);
+    gl.uniformMatrix4fv(uniformLocations.uView, false, this.#viewMatrix);
+
     for (const vaoInfo of this.#vertexArrayInfos) {
+      mat4.identity(this.#modelMatrix);
+      gl.uniformMatrix4fv(uniformLocations.uModel, false, this.#modelMatrix);
       gl.bindVertexArray(vaoInfo.vertexArray);
       gl.drawElements(
         vaoInfo.drawMode,
@@ -219,13 +261,24 @@ export class Graphics3D {
    */
   #vertexArrayInfos = [];
 
+  #projectionMatrix = mat4.create();
+  #viewMatrix = mat4.create();
+  #modelMatrix = mat4.create();
+  #eyeVec = vec3.fromValues(0., 0., -2.);
+  #eyeRotX = 0.;
+  #eyeRotY = 0.;
+  #eyeRotZ = 0.;
+
   #mainVertexSource = `#version 300 es
 in vec3 aVertex;
 in vec4 aColor;
+uniform mat4 uProjection;
+uniform mat4 uView;
+uniform mat4 uModel;
 out vec4 vColor;
 
 void main(void) {
-  gl_Position = vec4(aVertex, 1.);
+  gl_Position = uProjection * uView * uModel * vec4(aVertex, 1.);
   vColor = aColor;
 }
 `;
