@@ -1,3 +1,5 @@
+export const degToRad = (degrees) => degrees * Math.PI / 180.;
+
 export class Camera {
   /**
    * @returns {number}
@@ -42,35 +44,53 @@ export class Camera {
   }
 
   /**
-   * @param {number} dx
+   * @param {number} dr
    */
-  moveX(dx) {
-    this.#x += dx;
+  moveLeft(dr) {
+    const rad = -degToRad(this.#ay);
+    this.#x -= dr * Math.cos(rad);
+    this.#z += dr * Math.sin(rad);
   }
 
   /**
-   * @param {number} dy
+   * @param {number} dr
    */
-  moveY(dy) {
-    this.#y += dy;
+  moveRight(dr) {
+    const rad = -degToRad(this.#ay);
+    this.#x += dr * Math.cos(rad);
+    this.#z -= dr * Math.sin(rad);
   }
 
   /**
-   * @param {number} dz
+   * @param {number} dr
    */
-  moveZ(dz) {
-    this.#z += dz;
+  moveDown(dr) {
+    this.#y -= dr;
   }
 
   /**
-   * @param {number} dx
-   * @param {number} dy
-   * @param {number} dz
+   * @param {number} dr
    */
-  move(dx, dy, dz) {
-    this.moveX(dx);
-    this.moveY(dy);
-    this.moveZ(dz);
+  moveUp(dr) {
+    this.#y += dr;
+  }
+
+  /**
+   * @param {number} dr
+   */
+  moveForward(dr) {
+    const rad = -degToRad(this.#ay);
+    this.#x -= dr * Math.sin(rad);
+    this.#z -= dr * Math.cos(rad);
+  }
+
+  /**
+   * @param {number} dr
+   */
+  moveBackward(dr) {
+    const rad = -degToRad(this.#ay);
+    this.#x += dr * Math.sin(rad);
+    this.#z += dr * Math.cos(rad);
   }
 
   /**

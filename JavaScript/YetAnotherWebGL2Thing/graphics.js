@@ -1,10 +1,8 @@
 import * as glMatrix from "./include/gl-matrix/index.js";
 import { Geometry } from "./geometry.js";
-import { Camera } from "./camera.js";
+import { Camera, degToRad } from "./camera.js";
 
 const { mat4, vec3 } = glMatrix;
-
-const DEG_TO_RAD = Math.PI/180.;
 
 class ProgramInfo {
   /**
@@ -214,7 +212,7 @@ export class Graphics3D {
     const fovy = 60;
     const aspect = gl.canvas.height / gl.canvas.width;
     mat4.identity(this.#projectionMatrix);
-    mat4.perspective(this.#projectionMatrix, fovy*DEG_TO_RAD, aspect, 0.1, Infinity);
+    mat4.perspective(this.#projectionMatrix, degToRad(fovy), aspect, 0.1, Infinity);
     gl.uniformMatrix4fv(uniformLocations.uProjection, false, this.#projectionMatrix);
     /**
      * @type {Camera}
@@ -222,9 +220,9 @@ export class Graphics3D {
     const { x, y, z, ax, ay, az } = this.#camera;
     this.#eyeVec.set([-x, -y, -z]);
     mat4.identity(this.#viewMatrix);
-    mat4.rotateX(this.#viewMatrix, this.#viewMatrix, ax*DEG_TO_RAD);
-    mat4.rotateY(this.#viewMatrix, this.#viewMatrix, ay*DEG_TO_RAD);
-    mat4.rotateZ(this.#viewMatrix, this.#viewMatrix, az*DEG_TO_RAD);
+    mat4.rotateX(this.#viewMatrix, this.#viewMatrix, degToRad(ax));
+    mat4.rotateY(this.#viewMatrix, this.#viewMatrix, degToRad(ay));
+    mat4.rotateZ(this.#viewMatrix, this.#viewMatrix, degToRad(az));
     mat4.translate(this.#viewMatrix, this.#viewMatrix, this.#eyeVec);
     gl.uniformMatrix4fv(uniformLocations.uView, false, this.#viewMatrix);
 
