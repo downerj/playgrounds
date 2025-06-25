@@ -1,5 +1,6 @@
 import * as glMatrix from "./include/gl-matrix/index.js";
 import { Geometry } from "./geometry.js";
+import { Camera } from "./camera.js";
 
 const { mat4, vec3 } = glMatrix;
 
@@ -150,6 +151,13 @@ export class Graphics3D {
   }
 
   /**
+   * @param {Camera} camera 
+   */
+  setCamera(camera) {
+    this.#camera = camera;
+  }
+
+  /**
    * @param {Geometry} geometry
    */
   addObject(geometry) {
@@ -187,6 +195,9 @@ export class Graphics3D {
    *
    */
   render() {
+    if (this.#camera == null) {
+      return;
+    }
     const gl = this.#gl;
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.enable(gl.DEPTH_TEST);
@@ -205,10 +216,15 @@ export class Graphics3D {
     mat4.identity(this.#projectionMatrix);
     mat4.perspective(this.#projectionMatrix, fovy*DEG_TO_RAD, aspect, 0.1, Infinity);
     gl.uniformMatrix4fv(uniformLocations.uProjection, false, this.#projectionMatrix);
+    /**
+     * @type {Camera}
+     */
+    const { x, y, z, ax, ay, az } = this.#camera;
+    this.#eyeVec.set([-x, -y, -z]);
     mat4.identity(this.#viewMatrix);
-    mat4.rotateX(this.#viewMatrix, this.#viewMatrix, this.#eyeRotX*DEG_TO_RAD);
-    mat4.rotateY(this.#viewMatrix, this.#viewMatrix, this.#eyeRotY*DEG_TO_RAD);
-    mat4.rotateZ(this.#viewMatrix, this.#viewMatrix, this.#eyeRotZ*DEG_TO_RAD);
+    mat4.rotateX(this.#viewMatrix, this.#viewMatrix, ax*DEG_TO_RAD);
+    mat4.rotateY(this.#viewMatrix, this.#viewMatrix, ay*DEG_TO_RAD);
+    mat4.rotateZ(this.#viewMatrix, this.#viewMatrix, az*DEG_TO_RAD);
     mat4.translate(this.#viewMatrix, this.#viewMatrix, this.#eyeVec);
     gl.uniformMatrix4fv(uniformLocations.uView, false, this.#viewMatrix);
 
@@ -264,10 +280,11 @@ export class Graphics3D {
   #projectionMatrix = mat4.create();
   #viewMatrix = mat4.create();
   #modelMatrix = mat4.create();
-  #eyeVec = vec3.fromValues(0., 0., -2.);
-  #eyeRotX = 0.;
-  #eyeRotY = 0.;
-  #eyeRotZ = 0.;
+  #eyeVec = vec3.create();
+  /**
+   * @type {Camera?}
+   */
+  #camera = null;
 
   #mainVertexSource = `#version 300 es
 in vec3 aVertex;
