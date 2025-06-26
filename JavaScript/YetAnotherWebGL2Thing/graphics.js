@@ -193,6 +193,17 @@ export class Graphics3D {
   }
 
   /**
+   * @param {number} width
+   * @param {number} height
+   */
+  resize(width, height) {
+    const gl = this.#gl;
+    gl.viewport(0, 0, width, height);
+    this.#width = width;
+    this.#height = height;
+  }
+
+  /**
    *
    */
   render() {
@@ -200,7 +211,6 @@ export class Graphics3D {
       return;
     }
     const gl = this.#gl;
-    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
     gl.clearColor(0, 0.7, 1, 1);
@@ -212,15 +222,17 @@ export class Graphics3D {
     const { program, uniformLocations } = this.#programInfo;
     gl.useProgram(program);
 
-    const fovy = 60;
-    const aspect = gl.canvas.height / gl.canvas.width;
+    const fovy = degToRad(60);
+    const aspect = this.#width / this.#height;
+    const near = 0.1;
+    const far = Infinity;
     mat4.identity(this.#projectionMatrix);
     mat4.perspective(
       this.#projectionMatrix,
-      degToRad(fovy),
+      fovy,
       aspect,
-      0.1,
-      Infinity
+      near,
+      far
     );
     gl.uniformMatrix4fv(
       uniformLocations.uProjection,
@@ -296,6 +308,14 @@ export class Graphics3D {
    * @type {Camera?}
    */
   #camera = null;
+  /**
+   * @type {number}
+   */
+  #width = 0;
+  /**
+   * @type {number}
+   */
+  #height = 0;
 
   #mainVertexSource = `#version 300 es
 in vec3 aVertex;
