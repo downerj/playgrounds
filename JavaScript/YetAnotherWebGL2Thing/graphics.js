@@ -1,6 +1,6 @@
-import * as glMatrix from "./include/gl-matrix/index.js";
-import { Geometry } from "./geometry.js";
-import { Camera, degToRad } from "./camera.js";
+import * as glMatrix from './include/gl-matrix/index.js';
+import { Geometry } from './geometry.js';
+import { Camera, degToRad } from './camera.js';
 
 const { mat4, vec3 } = glMatrix;
 
@@ -16,7 +16,7 @@ class ProgramInfo {
     for (const key in this.#uniformLocations) {
       this.#uniformLocations[key] = gl.getUniformLocation(this.#program, key);
     }
-  };
+  }
 
   get program() {
     return this.#program;
@@ -40,7 +40,7 @@ class ProgramInfo {
   #uniformLocations = {
     uProjection: -1,
     uView: -1,
-    uModel: -1
+    uModel: -1,
   };
 
   /**
@@ -50,7 +50,10 @@ class ProgramInfo {
   #createProgram(vertexSource, fragmentSource) {
     const gl = this.#gl;
     const vertexShader = this.#createShader(gl.VERTEX_SHADER, vertexSource);
-    const fragmentShader = this.#createShader(gl.FRAGMENT_SHADER, fragmentSource);
+    const fragmentShader = this.#createShader(
+      gl.FRAGMENT_SHADER,
+      fragmentSource
+    );
     const program = gl.createProgram();
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
@@ -149,7 +152,7 @@ export class Graphics3D {
   }
 
   /**
-   * @param {Camera} camera 
+   * @param {Camera} camera
    */
   setCamera(camera) {
     this.#camera = camera;
@@ -200,7 +203,7 @@ export class Graphics3D {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
-    gl.clearColor(0., .7, 1., 1.);
+    gl.clearColor(0, 0.7, 1, 1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.enable(gl.CULL_FACE);
     gl.cullFace(gl.BACK);
@@ -212,8 +215,18 @@ export class Graphics3D {
     const fovy = 60;
     const aspect = gl.canvas.height / gl.canvas.width;
     mat4.identity(this.#projectionMatrix);
-    mat4.perspective(this.#projectionMatrix, degToRad(fovy), aspect, 0.1, Infinity);
-    gl.uniformMatrix4fv(uniformLocations.uProjection, false, this.#projectionMatrix);
+    mat4.perspective(
+      this.#projectionMatrix,
+      degToRad(fovy),
+      aspect,
+      0.1,
+      Infinity
+    );
+    gl.uniformMatrix4fv(
+      uniformLocations.uProjection,
+      false,
+      this.#projectionMatrix
+    );
     /**
      * @type {Camera}
      */
@@ -253,7 +266,7 @@ export class Graphics3D {
     gl.bufferData(target, data, usage ?? gl.STATIC_DRAW);
     gl.bindBuffer(target, null);
     return buffer;
-  };
+  }
 
   /**
    * @type {WebGL2RenderingContext}
@@ -312,5 +325,4 @@ void main(void) {
   fragColor = vColor;
 }
 `;
-
 }

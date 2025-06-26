@@ -4,7 +4,7 @@
  */
 export const setFramerateTimer = (callback, interval) => {
   let previous = 0;
-  const onTick = (timestamp) => {
+  const onTick = timestamp => {
     if (timestamp - previous >= interval) {
       previous = timestamp;
       callback(timestamp);

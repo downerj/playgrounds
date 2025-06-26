@@ -1,4 +1,4 @@
-export const degToRad = (degrees) => degrees * Math.PI / 180.;
+export const degToRad = degrees => (degrees * Math.PI) / 180;
 
 export class Camera {
   /**
@@ -21,7 +21,7 @@ export class Camera {
   get y() {
     return this.#y;
   }
-  
+
   /**
    * @param {number} value
    */
@@ -162,33 +162,33 @@ export class Camera {
    * @param {number} daz
    */
   rotate(dax, day, daz) {
-   this.rotateX(dax);
-   this.rotateY(day);
-   this.rotateZ(daz);
+    this.rotateX(dax);
+    this.rotateY(day);
+    this.rotateZ(daz);
   }
 
   /**
    * @type {number}
    */
-  #x = 0.;
+  #x = 0;
   /**
    * @type {number}
    */
-  #y = 0.;
+  #y = 0;
   /**
    * @type {number}
    */
-  #z = 0.;
+  #z = 0;
   /**
    * @type {number}
    */
-  #ax = 0.;
+  #ax = 0;
   /**
    * @type {number}
    */
-  #ay = 0.;
+  #ay = 0;
   /**
    * @type {number}
    */
-  #az = 0.;
+  #az = 0;
 }
