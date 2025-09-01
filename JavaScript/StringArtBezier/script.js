@@ -1,3 +1,13 @@
+/**
+ * @param {number} a
+ * @param {number} b
+ * @param {number} t
+ * @returns {number}
+ */
+const lerp = (a, b, t) => {
+  return a*(1 - t) + b*t;
+};
+
 class Application {
   /**
    * @type {CanvasRenderingContext2D}
@@ -7,6 +17,7 @@ class Application {
     50, 10,
     10, 50,
     90, 90,
+    10, 90,
   ];
   
   /**
@@ -28,17 +39,45 @@ class Application {
       0, ctx.canvas.height/100,
       0, 0
     );
-    if (this.#points.length < 2) {
+    const numPoints = Math.floor(this.#points.length / 2);
+    // Draw the outlines.
+    if (numPoints < 2) {
       return;
     }
+    const x0 = this.#points[0];
+    const y0 = this.#points[1];
     ctx.strokeStyle = '#ffffff';
     ctx.beginPath();
-    const [x0, y0] = this.#points;
     ctx.moveTo(x0, y0);
-    for (let p = 2; p < this.#points.length - 1; p += 2) {
-      ctx.lineTo(this.#points[p], this.#points[p + 1]);
+    for (let p = 0; p < numPoints; ++p) {
+      ctx.lineTo(this.#points[p*2], this.#points[p*2 + 1]);
     }
     ctx.stroke();
+    // Draw the intermediate lines.
+    if (numPoints < 3) {
+      return;
+    }
+    for (let c = 0; c <= 10; ++c) {
+      const percent = c/10;
+      const hue = Math.floor(360*percent);
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+      ctx.beginPath();
+      for (let p = 0; p < numPoints; ++p) {
+        const xP0 = this.#points[p*2];
+        const yP0 = this.#points[p*2 + 1];
+        const xP1 = this.#points[p*2 + 2];
+        const yP1 = this.#points[p*2 + 3];
+        const xP2 = this.#points[p*2 + 4];
+        const yP2 = this.#points[p*2 + 5];
+        const xL0 = lerp(xP0, xP1, percent);
+        const yL0 = lerp(yP0, yP1, percent);
+        const xL1 = lerp(xP1, xP2, percent);
+        const yL1 = lerp(yP1, yP2, percent);
+        ctx.moveTo(xL0, yL0);
+        ctx.lineTo(xL1, yL1);
+      }
+      ctx.stroke();
+    }
   }
 }
 
