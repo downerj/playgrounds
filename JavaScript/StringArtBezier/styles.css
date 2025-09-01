@@ -17,8 +17,10 @@ body {
 }
 
 .drawing-area {
+  /* TODO: Fix aspect ratio. */
   width: 100vmin;
   height: 100vmin;
+  aspect-ratio: 1;
   position: absolute;
   left: calc(50% - 100vmin/2);
   top: calc(50% - 100vmin/2);
