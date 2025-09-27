@@ -1,5 +1,21 @@
+#include <cstddef>
+#include <exception>
 #include <iostream>
 
+#include "app.hxx"
+
+// TODO: Add debug header, wrap cout & cerr in log functions.
+
 auto main(int, char**) -> int {
-  std::cout << "Hello, there!\n";
+  try {
+    my::Application app{};
+    while (app.handleEvents()) {
+      app.render();
+    }
+  } catch(std::exception& ex) {
+#ifdef DEBUG
+    std::cerr << "Caught exception: " << ex.what() << '\n';
+#endif
+    return EXIT_FAILURE;
+  }
 }

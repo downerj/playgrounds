@@ -1,3 +1,5 @@
+include/
+lib/
 build/
 x86/
 x64/

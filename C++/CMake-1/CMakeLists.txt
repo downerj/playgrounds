@@ -8,8 +8,21 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(VERBOSE_MAKEFILE OFF CACHE BOOL "Whether to use verbose output when using Makefiles")
 set(CMAKE_VERBOSE_MAKEFILE ${VERBOSE_MAKEFILE})
 
+set(GLAD_INCLUDE_DIR "" CACHE STRING "Parent directory (e.g. \"include\") of the directory containing the GLAD 2 header")
+set(SDL3_INCLUDE_DIR "" CACHE STRING "Parent directory (e.g. \"include\") of the directory containing the SDL 3 headers")
+set(SDL3_LIB_DIR "" CACHE STRING "Directory containing the compiled SDL3 library")
+
+include_directories(
+  "${GLAD_INCLUDE_DIR}"
+)
+
+link_directories(
+  "${SDL3_LIB_DIR}"
+)
+
 set(SRC_DIR "src")
 set(SOURCES
+  ${SRC_DIR}/app.cxx
   ${SRC_DIR}/main.cxx
 )
 
@@ -33,3 +46,4 @@ if(NOT MSVC)
 endif()
 
 add_executable(example ${SOURCES})
+target_link_libraries(example SDL3)
