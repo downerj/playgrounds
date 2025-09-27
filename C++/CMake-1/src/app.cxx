@@ -7,7 +7,7 @@
 #include <glad/gl.h>
 
 /**
- * Declarations
+ * Declarations.
  */
 
 namespace {
@@ -41,7 +41,7 @@ my::Application::Application() {
   std::cout << "Initializing SDL...";
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, 
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
     SDL_GL_CONTEXT_PROFILE_CORE);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
@@ -63,7 +63,7 @@ my::Application::Application() {
     throw std::runtime_error("SDL OpenGL init failure");
   }
   std::cout << "Succeeded\n";
-  
+
   std::cout << "Initializing GLAD OpenGL...";
   if (!gladLoadGL(SDL_GL_GetProcAddress)) {
     std::cout << "Failed\n";
