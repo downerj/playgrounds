@@ -114,8 +114,9 @@ auto my::Application::handleEvents() -> bool {
         break;
       case SDL_EVENT_KEY_DOWN: {
         SDL_Keymod mods{SDL_GetModState()};
-        bool isCtrlQ = mods & SDL_KMOD_CTRL && event.key.scancode == SDL_SCANCODE_Q;
-        bool isCtrlW = mods & SDL_KMOD_CTRL && event.key.scancode == SDL_SCANCODE_W;
+        bool isCtrl = mods == SDL_KMOD_LCTRL || mods == SDL_KMOD_RCTRL;
+        bool isCtrlQ = isCtrl && event.key.scancode == SDL_SCANCODE_Q;
+        bool isCtrlW = isCtrl && event.key.scancode == SDL_SCANCODE_W;
         if (isCtrlQ || isCtrlW) {
           return false;
         }
