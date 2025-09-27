@@ -59,7 +59,7 @@ my::Application::Application() {
   if (context == nullptr) {
     std::cout << "Failed\n";
     std::cerr << "SDL OpenGL Error: " << SDL_GetError() << '\n';
-    SDL_DestroyWindow(window);
+    cleanUpWindow();
     throw std::runtime_error("SDL OpenGL init failure");
   }
   std::cout << "Succeeded\n";
@@ -68,6 +68,7 @@ my::Application::Application() {
   if (!gladLoadGL(SDL_GL_GetProcAddress)) {
     std::cout << "Failed\n";
     std::cerr << "Failed to load GLAD OpenGL library\n";
+    cleanUpAll();
     throw std::runtime_error("GLAD OpenGL init failure");
   }
   std::cout << "Succeeded\n";
@@ -88,8 +89,8 @@ my::Application::Application() {
   }
 }
 
-my::Application::~Application() {
-  cleanUp();
+my::Application::~Application() noexcept {
+  cleanUpAll();
 }
 
 auto my::Application::getWindow() const -> SDL_Window* {
@@ -126,17 +127,25 @@ auto my::Application::handleEvents() -> bool {
   return true;
 }
 
-auto my::Application::cleanUp() -> void {
-  if (context != nullptr) {
-    std::cout << "Cleaning up SDL OpenGL context...";
-    SDL_GL_DestroyContext(context);
-    std::cout << "Done\n";
-  }
+auto my::Application::cleanUpWindow() noexcept -> void {
   if (window != nullptr) {
     std::cout << "Cleaning up SDL window...";
     SDL_DestroyWindow(window);
     std::cout << "Done\n";
   }
+}
+
+auto my::Application::cleanUpContext() noexcept -> void {
+  if (context != nullptr) {
+    std::cout << "Cleaning up SDL OpenGL context...";
+    SDL_GL_DestroyContext(context);
+    std::cout << "Done\n";
+  }
+}
+
+auto my::Application::cleanUpAll() noexcept -> void {
+  cleanUpContext();
+  cleanUpWindow();
 }
 
 auto my::Application::render() -> void {

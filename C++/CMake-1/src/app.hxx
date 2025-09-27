@@ -9,7 +9,7 @@ namespace my {
 class Application {
 public:
   Application();
-  ~Application();
+  ~Application() noexcept;
 
   Application(const Application&) = delete;
   Application(Application&&) = delete;
@@ -25,7 +25,9 @@ private:
   SDL_Window* window;
   SDL_GLContext context;
 
-  auto cleanUp() -> void;
+  auto cleanUpWindow() noexcept -> void;
+  auto cleanUpContext() noexcept -> void;
+  auto cleanUpAll() noexcept -> void;
 };
 
 }
