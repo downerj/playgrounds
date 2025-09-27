@@ -1,0 +1,6 @@
+build/
+x86/
+x64/
+.vs/
+.idea/
+.vscode/
