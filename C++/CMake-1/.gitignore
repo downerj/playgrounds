@@ -1,6 +1,7 @@
 include/
 lib/
 build/
+bin/
 x86/
 x64/
 .vs/

@@ -12,7 +12,7 @@ auto main(int, char**) -> int {
     while (app.handleEvents()) {
       app.render();
     }
-  } catch(std::exception& ex) {
+  } catch([[maybe_unused]] std::exception& ex) {
 #ifdef DEBUG
     std::cerr << "Caught exception: " << ex.what() << '\n';
 #endif
