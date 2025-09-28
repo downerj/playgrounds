@@ -11,3 +11,7 @@
 # Binary & object folders
 **/bin/
 **/obj/
+
+# VS & VSCode settings
+**/.vs/
+**/.vscode/
