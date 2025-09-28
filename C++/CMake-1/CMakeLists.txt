@@ -64,6 +64,17 @@ target_link_libraries(game PRIVATE
   $<IF:$<BOOL:${SDL_STATIC_LINK}>,SDL3::SDL3-static,SDL3::SDL3>
   OpenGL::GL
 )
-
-install(FILES $<TARGET_RUNTIME_DLLS:game> TYPE BIN)
 install(TARGETS game RUNTIME DESTINATION bin)
+
+if(NOT ${SDL_STATIC_LINK})
+  if(MSVC)
+    install(FILES $<TARGET_RUNTIME_DLLS:game> TYPE BIN)
+  else()
+    # TODO: Fix missing symlinks, rpath, etc.
+    install(FILES
+      $<TARGET_LINKER_FILE:SDL3::SDL3>
+      $<TARGET_SONAME_FILE:SDL3::SDL3>
+      DESTINATION bin
+    )
+  endif()
+endif()
