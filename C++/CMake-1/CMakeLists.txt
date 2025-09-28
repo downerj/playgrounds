@@ -1,16 +1,17 @@
 cmake_minimum_required(VERSION 3.28)
-project(example)
+project(game)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(VERBOSE_MAKEFILE OFF CACHE BOOL "Whether to use verbose output when using Makefiles")
-set(CMAKE_VERBOSE_MAKEFILE ${VERBOSE_MAKEFILE})
-
 set(GLAD_INCLUDE_DIR "" CACHE STRING "Parent directory (e.g. \"include\") of the directory containing the GLAD 2 header")
 set(SDL3_INCLUDE_DIR "" CACHE STRING "Parent directory (e.g. \"include\") of the directory containing the SDL 3 headers")
 set(SDL3_LIB_DIR "" CACHE STRING "Directory containing the compiled SDL3 library")
+set(SDL3_STATIC_LINK OFF CACHE BOOL "Statically link SDL3 library into executable")
+set(VERBOSE_MAKEFILE OFF CACHE BOOL "Use verbose output when using Makefiles")
+
+set(CMAKE_VERBOSE_MAKEFILE ${VERBOSE_MAKEFILE})
 
 include_directories(
   "${GLAD_INCLUDE_DIR}"
@@ -45,5 +46,9 @@ if(NOT MSVC)
   )
 endif()
 
-add_executable(example ${SOURCES})
-target_link_libraries(example SDL3)
+add_executable(game ${SOURCES})
+if (SDL3_STATIC_LINK)
+  target_link_libraries(game SDL3.a)
+else()
+  target_link_libraries(game SDL3)
+endif()
