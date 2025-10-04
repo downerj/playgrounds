@@ -5,6 +5,7 @@
 
 #define GLAD_GL_IMPLEMENTATION
 #include <glad/gl.h>
+#include <glm/glm.hpp>
 
 /**
  * Declarations.
@@ -155,5 +156,9 @@ auto my::Application::render() -> void {
   glViewport(0, 0, w, h);
   glClearColor(0.0f, 0.8f, 1.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
+#ifdef DEBUG
+  glm::mat4 testMatA{};
+  glm::mat4 testMatB{glm::inverse(testMatA)};
+#endif
   SDL_GL_SwapWindow(window);
 }

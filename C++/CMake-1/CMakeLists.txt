@@ -8,6 +8,7 @@ set(CMAKE_VERBOSE_MAKEFILE ${VERBOSE_MAKEFILE})
 
 # Third-party libraries
 find_package(SDL3 REQUIRED)
+find_package(glm REQUIRED)
 find_package(OpenGL REQUIRED)
 set(GLAD_INCLUDE_DIR "include")
 
