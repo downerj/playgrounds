@@ -3,8 +3,16 @@ project(game VERSION 0.0.1 LANGUAGES CXX)
 
 # Options
 option(SDL_STATIC_LINK "Statically link SDL library into executable" OFF)
+option(DYNAMIC_LINK_USE_RPATH "Use rpath to dynamically load shared objects" OFF)
 option(VERBOSE_MAKEFILE "Use verbose output when using Makefiles" OFF)
+if(NOT ${SDL_STATIC_LINK} AND ${DYNAMIC_LINK_USE_RPATH})
+  set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+  set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+  set(CMAKE_SKIP_RPATH OFF)
+  set(CMAKE_INSTALL_RPATH "$ORIGIN")
+endif()
 set(CMAKE_VERBOSE_MAKEFILE ${VERBOSE_MAKEFILE})
+
 
 # Third-party libraries
 find_package(SDL3 REQUIRED)
@@ -66,6 +74,13 @@ target_link_libraries(game PRIVATE
   $<IF:$<BOOL:${SDL_STATIC_LINK}>,SDL3::SDL3-static,SDL3::SDL3>
   OpenGL::GL
 )
+if(NOT ${SDL_STATIC_LINK} AND ${DYNAMIC_LINK_USE_RPATH})
+  set_target_properties(game PROPERTIES
+    INSTALL_RPATH "$ORIGIN"
+    BUILD_WITH_INSTALL_RPATH ON
+    LINK_OPTIONS "-Wl,--disable-new-dtags"
+  )
+endif()
 
 # Installation, copy DLLs/shared libaries
 install(TARGETS game RUNTIME DESTINATION bin)
@@ -73,7 +88,6 @@ if(NOT ${SDL_STATIC_LINK})
   if(MSVC)
     install(FILES $<TARGET_RUNTIME_DLLS:game> TYPE BIN)
   else()
-    # TODO: Fix missing symlinks, rpath, etc.
     install(FILES
       $<TARGET_LINKER_FILE:SDL3::SDL3>
       $<TARGET_SONAME_FILE:SDL3::SDL3>
