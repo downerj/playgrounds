@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 import turtle
 from turtle import Screen, Turtle
 
@@ -62,4 +63,7 @@ t.penup()
 
 t.hideturtle()
 
-turtle.done()
+# Use `python -i main.py` at the CLI to interact with the window after it's done drawing
+# If not interactive (i.e. `python main.py`), this will keep the window open anyway
+if sys.flags.interactive != 1 and sys.flags.inspect != 1:
+    turtle.done()
