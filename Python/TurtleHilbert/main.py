@@ -55,7 +55,6 @@ def hilbert(level: int, angle: float, color_iter: Iterator[str]) -> None:
 def main() -> None:
     setup()
     colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "purple", "magenta"]
-    t.pencolor("red")
     t.pendown()
     hilbert(level=4, angle=90, color_iter=itertools.cycle(colors))
     t.hideturtle()
