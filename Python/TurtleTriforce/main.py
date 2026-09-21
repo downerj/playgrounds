@@ -6,18 +6,21 @@ from turtle import Screen, Turtle
 scr_width = 400
 scr_height = 400
 s = Screen()
+s.bgcolor("black")
 s.title("Triforce")
+w = s.getcanvas().winfo_toplevel()
 s.setup(width=scr_width, height=scr_height)
+w.resizable(width=False, height=False)
 s.setworldcoordinates(llx=0, lly=0, urx=scr_width, ury=scr_height)
-# Make the window semi-transparent
-#s.getcanvas().winfo_toplevel().attributes("-alpha", 0.9)
+w.attributes("-alpha", 0.9)
 
 dist = min(scr_width, scr_height)/2
 t = Turtle()
 t.penup()
 t.pensize(3)
-t.pencolor("black")
-t.fillcolor("yellow")
+t.color("yellow")
+# t.pencolor("white")
+# t.fillcolor("yellow")
 
 # First triangle
 
