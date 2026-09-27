@@ -20,10 +20,11 @@ def setup(screen_width: int, screen_height: int) -> None:
     s.setworldcoordinates(llx=0, lly=0, urx=screen_width, ury=screen_height)
 
     w.resizable(width=False, height=False)
-    w.attributes("-alpha", 0.92)
+    w.attributes("-alpha", 0.85)
 
     t.speed("fastest")
     t.pensize(3)
+    t.hideturtle()
 
 
 class Branch:
@@ -48,7 +49,7 @@ class Branch:
 
 def draw_tree(x: float, y: float, length: float, angle: float) -> None:
     # Disable animations, need to manually update later
-    # turtle.tracer(0)
+    turtle.tracer(0)
 
     trunk = Branch()
     trunk.x = x
@@ -57,10 +58,12 @@ def draw_tree(x: float, y: float, length: float, angle: float) -> None:
     trunk.angle = angle
     tree: Queue[Branch] = Queue()
     tree.put(trunk)
-    max_depth = 7
-    colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "purple", "magenta"]
-    # Previous depth for updating drawing periodically
+    max_depth = 6
+    colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "magenta"]
+    # Previous depth for updating the drawing periodically
     # previous_depth = trunk.depth
+    # Branch counter for updating the drawing periodically
+    b = 0
     while not tree.empty():
         branch = tree.get()
         t.penup()
@@ -94,11 +97,15 @@ def draw_tree(x: float, y: float, length: float, angle: float) -> None:
             #     rotation = random.randint(-60, 60) / 1.0
             #     tree.put(branch.make_child(scale, rotation))
         
-        # Update drawing periodically
+        # Update drawing periodically based on branch depth
         # if branch.depth > previous_depth:
         #     previous_depth = branch.depth
         #     turtle.update()
-    t.hideturtle()
+
+        # Update drawing periodically based on branch count
+        b += 1
+        if b % child_count == 0:
+            turtle.update()
 
 
 def main() -> None:
