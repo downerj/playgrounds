@@ -2,8 +2,9 @@
 
 import math
 from queue import Queue
-import random
+# import random
 import sys
+from tkinter import TclError
 import turtle
 from turtle import Screen, Turtle
 
@@ -47,7 +48,7 @@ class Branch:
 
 def draw_tree(x: float, y: float, length: float, angle: float) -> None:
     # Disable animations, need to manually update later
-    turtle.tracer(0)
+    # turtle.tracer(0)
 
     trunk = Branch()
     trunk.x = x
@@ -58,7 +59,8 @@ def draw_tree(x: float, y: float, length: float, angle: float) -> None:
     tree.put(trunk)
     max_depth = 7
     colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "purple", "magenta"]
-    previous_depth = trunk.depth
+    # Previous depth for updating drawing periodically
+    # previous_depth = trunk.depth
     while not tree.empty():
         branch = tree.get()
         t.penup()
@@ -69,29 +71,23 @@ def draw_tree(x: float, y: float, length: float, angle: float) -> None:
         t.forward(branch.length)
         t.penup()
         if branch.depth < max_depth:
-            #
             # Preset child count, scaling & rotation (version 1)
-            #
             # scale = 0.6
             # rotation = 60.0
             # tree.put(branch.make_child(scale, rotation))
             # tree.put(branch.make_child(scale, -rotation))
 
-            #
             # Preset child count, scaling & rotation (version 2)
-            #
-            child_count = 3
-            begin_angle = -80.0
-            end_angle = 60.0
+            child_count = 4
+            begin_angle = -70.0
+            end_angle = 70.0
             delta_angle = (end_angle - begin_angle) / (child_count - 1)
             scale = 0.52
             for c in range(child_count):
                 rotation = begin_angle + delta_angle*c
                 tree.put(branch.make_child(scale, rotation))
 
-            #
             # Random child count, scaling & rotation
-            #
             # child_count = random.randint(2, 8)
             # for _ in range(child_count):
             #     scale = random.randint(50, 70) / 100.0
@@ -99,9 +95,9 @@ def draw_tree(x: float, y: float, length: float, angle: float) -> None:
             #     tree.put(branch.make_child(scale, rotation))
         
         # Update drawing periodically
-        if branch.depth > previous_depth:
-            previous_depth = branch.depth
-            turtle.update()
+        # if branch.depth > previous_depth:
+        #     previous_depth = branch.depth
+        #     turtle.update()
     t.hideturtle()
 
 
@@ -120,7 +116,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    sys.tracebacklimit = 0
     try:
         main()
-    except:
-        print("Operation aborted", file=sys.stderr)
+    except TclError as e:
+        print(f"Operation aborted: {e}", file=sys.stderr)
