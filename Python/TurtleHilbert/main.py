@@ -2,8 +2,9 @@
 
 import itertools
 import sys
+from tkinter import TclError
 import turtle
-from turtle import Screen, Turtle
+from turtle import Screen, Terminator, Turtle, TurtleGraphicsError
 from typing import Iterator
 
 s = Screen()
@@ -28,6 +29,7 @@ def setup() -> None:
 
     t.speed("fastest")
     t.pensize(3)
+    t.hideturtle()
 
 
 # This algorithm is adapted from:
@@ -54,7 +56,12 @@ def hilbert(level: int, angle: float, color_iter: Iterator[str]) -> None:
 
 def main() -> None:
     setup()
-    colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "purple", "magenta"]
+    # colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "purple", "magenta"]
+    colors = [
+        "#ff0000", "#ff7700", "#ffff00", "#77ff00",
+        "#00ff00", "#00ff77", "#00ffff", "#0077ff",
+        "#0000ff", "#7700ff", "#ff00ff", "#ff0077"
+    ]
     t.pendown()
     hilbert(level=4, angle=90, color_iter=itertools.cycle(colors))
     t.hideturtle()
@@ -63,4 +70,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    sys.tracebacklimit = 0
+    try:
+        main()
+    except (TclError, Terminator, TurtleGraphicsError) as e:
+        print(f"Operation aborted: {e}", file=sys.stderr)
