@@ -10,6 +10,7 @@ from typing import Iterator
 s = Screen()
 w = s.getcanvas().winfo_toplevel()
 t = Turtle()
+max_level = 6
 dist = 0
 
 
@@ -17,7 +18,7 @@ def setup() -> None:
     screen_width = 400
     screen_height = 400
     global dist
-    dist = min(screen_width, screen_height) / 15.0
+    dist = min(screen_width, screen_height) / (2 ** max_level - 1)
 
     s.bgcolor("black")
     s.title("Hilbert Curve")
@@ -56,17 +57,17 @@ def hilbert(level: int, angle: float, color_iter: Iterator[str]) -> None:
 
 def main() -> None:
     setup()
-    # colors = ["red", "orange", "yellow", "lime", "cyan", "blue", "purple", "magenta"]
     colors = [
         "#ff0000", "#ff7700", "#ffff00", "#77ff00",
         "#00ff00", "#00ff77", "#00ffff", "#0077ff",
         "#0000ff", "#7700ff", "#ff00ff", "#ff0077"
     ]
     t.pendown()
-    hilbert(level=4, angle=90, color_iter=itertools.cycle(colors))
+    hilbert(level=max_level, angle=90, color_iter=itertools.cycle(colors))
     t.hideturtle()
     if sys.flags.interactive != 1 and sys.flags.inspect != 1:
         turtle.done()
+    print("Done")
 
 
 if __name__ == "__main__":
