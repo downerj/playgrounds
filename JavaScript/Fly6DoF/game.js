@@ -69,7 +69,7 @@ class RuntimeObject {
   }
 }
 
-const modelDefintions = {
+const modelDefinitions = {
   rectangle: {
     vertices: [
       // Bottom left
@@ -100,9 +100,9 @@ const modelDefintions = {
 
 const modelAssets = {
   rectangle: new ModelAsset(
-    modelDefintions.rectangle.vertices,
-    modelDefintions.rectangle.indices,
-    modelDefintions.rectangle.colors
+    modelDefinitions.rectangle.vertices,
+    modelDefinitions.rectangle.indices,
+    modelDefinitions.rectangle.colors
   )
 };
 
@@ -167,7 +167,7 @@ export class Game {
   /**
    * @type {{ [name: string]: WebGLProgram }}
    */
-  #prorgams = {
+  #programs = {
     main: undefined
   };
   /**
@@ -213,7 +213,7 @@ export class Game {
         gl.getAttribLocation(mainProgram, 'color')
       );
       this.#dataObjects.rectangle = rectangle;
-      this.#prorgams.main = mainProgram;
+      this.#programs.main = mainProgram;
       return true;
     } catch (ex) {
       console.error(ex);
@@ -331,7 +331,7 @@ export class Game {
   #render() {
     const gl = this.#gl;
 
-    gl.useProgram(this.#prorgams.main);
+    gl.useProgram(this.#programs.main);
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
@@ -340,7 +340,7 @@ export class Game {
     gl.cullFace(gl.BACK);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    gl.useProgram(this.#prorgams.main);
+    gl.useProgram(this.#programs.main);
     const rectangle = this.#dataObjects.rectangle;
     gl.bindVertexArray(rectangle.vao);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, rectangle.ibo);
@@ -374,7 +374,7 @@ export class Game {
   //   }
 
   //   gl.useProgram(null);
-  //   for (const program of Object.values(this.#prorgams)) {
+  //   for (const program of Object.values(this.#programs)) {
   //     gl.deleteProgram(program);
   //   }
   // }
