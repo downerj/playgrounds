@@ -207,11 +207,7 @@ export class Game {
           gl.deleteShader(mainFragmentShader);
         }
       })();
-      const rectangle = this.#initializeVertexArray(
-        modelAssets.rectangle,
-        gl.getAttribLocation(mainProgram, 'position'),
-        gl.getAttribLocation(mainProgram, 'color')
-      );
+      const rectangle = this.#initializeVertexArray(modelAssets.rectangle, mainProgram);
       this.#dataObjects.rectangle = rectangle;
       this.#programs.main = mainProgram;
       return true;
@@ -276,15 +272,18 @@ export class Game {
 
   /**
    * @param {ModelAsset} asset
-   * @param {GLuint} positionLocation
-   * @param {GLuint} colorLocation
+   * @param {WebGLProgram} program
    * @returns {RuntimeObject}
    */
-  #initializeVertexArray(asset, positionLocation, colorLocation) {
+  #initializeVertexArray(asset, program) {
     const gl = this.#gl;
 
+    gl.useProgram(program);
     const vao = gl.createVertexArray();
     gl.bindVertexArray(vao);
+
+    const positionLocation = gl.getAttribLocation(program, 'position');
+    const colorLocation = gl.getAttribLocation(program, 'color');
 
     const vbo = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
@@ -301,10 +300,11 @@ export class Game {
     const ibo = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, asset.indices, gl.STATIC_DRAW);
-    
+
     gl.bindVertexArray(null);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+    gl.useProgram(null);
 
     return new RuntimeObject(vao, vbo, ibo, colorBuffer, asset.indexCount);
   }
