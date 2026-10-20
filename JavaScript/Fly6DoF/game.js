@@ -1,5 +1,5 @@
-import { loadAllResourcesAsync, modelAssets, RuntimeObject } from "./resources.js";
-import { AnimationTimer } from "./timer.js";
+import { loadAllResourcesAsync, modelAssets, RuntimeObject } from './resources.js';
+import { AnimationTimer } from './timer.js';
 
 /**
  * @import { ModelAsset } from './resources.js'
@@ -9,7 +9,7 @@ import { AnimationTimer } from "./timer.js";
  * @param {HTMLCanvasElement} canvas
  * @throws An error if unable to initialize a WebGL 2 context
  */
-const initializeGL = (canvas) => {
+const initializeGL = canvas => {
   const gl = canvas.getContext('webgl2');
   if (gl == null) {
     throw new Error('Failed to initialize WebGL 2 context');

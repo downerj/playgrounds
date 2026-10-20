@@ -1,14 +1,14 @@
-import { Game } from "./game.js";
+import { Game } from './game.js';
 
 /**
  * @param {HTMLCanvasElement} canvas
  */
-const resizeCanvasToParent = (canvas) => {
+const resizeCanvasToParent = canvas => {
   canvas.width = canvas.parentElement.clientWidth;
   canvas.height = canvas.parentElement.clientHeight;
 };
 
-document.addEventListener('DOMContentLoaded', async (_ev) => {
+document.addEventListener('DOMContentLoaded', async _ev => {
   /**
    * @type {HTMLCanvasElement}
    */
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async (_ev) => {
     return;
   }
 
-  window.addEventListener('resize', (_ev) => {
+  window.addEventListener('resize', _ev => {
     resizeCanvasToParent(cvs);
     game.updateCanvasSize();
   });
