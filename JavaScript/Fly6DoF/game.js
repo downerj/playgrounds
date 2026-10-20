@@ -357,25 +357,25 @@ export class Game {
     this.#render();
   }
 
-  /**
-   * 
-   */
-  cleanUpAll() {
-    const gl = this.#gl;
+  // /**
+  //  * 
+  //  */
+  // cleanUpAll() {
+  //   const gl = this.#gl;
 
-    gl.bindVertexArray(null);
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
-    for (const dataObject of Object.values(this.#dataObjects)) {
-      gl.deleteVertexArray(dataObject.vao);
-      gl.deleteBuffer(dataObject.vbo);
-      gl.deleteBuffer(dataObject.ibo);
-      gl.deleteBuffer(dataObject.colorBuffer);
-    }
+  //   gl.bindVertexArray(null);
+  //   gl.bindBuffer(gl.ARRAY_BUFFER, null);
+  //   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+  //   for (const dataObject of Object.values(this.#dataObjects)) {
+  //     gl.deleteVertexArray(dataObject.vao);
+  //     gl.deleteBuffer(dataObject.vbo);
+  //     gl.deleteBuffer(dataObject.ibo);
+  //     gl.deleteBuffer(dataObject.colorBuffer);
+  //   }
 
-    gl.useProgram(null);
-    for (const program of Object.values(this.#prorgams)) {
-      gl.deleteProgram(program);
-    }
-  }
+  //   gl.useProgram(null);
+  //   for (const program of Object.values(this.#prorgams)) {
+  //     gl.deleteProgram(program);
+  //   }
+  // }
 }
