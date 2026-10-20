@@ -8,18 +8,23 @@ const resizeCanvasToParent = (canvas) => {
   canvas.height = canvas.parentElement.clientHeight;
 };
 
-document.addEventListener('DOMContentLoaded', (_ev) => {
+document.addEventListener('DOMContentLoaded', async (_ev) => {
   /**
    * @type {HTMLCanvasElement}
    */
   const cvs = document.getElementById('cvs');
   const game = new Game(cvs);
+  const areGraphicsReady = await game.initializeGraphicsAsync();
+  if (!areGraphicsReady) {
+    return;
+  }
 
   window.addEventListener('resize', (_ev) => {
     resizeCanvasToParent(cvs);
     game.updateCanvasSize();
   });
   resizeCanvasToParent(cvs);
+  game.updateCanvasSize();
 
   game.run();
 });
