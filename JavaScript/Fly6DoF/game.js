@@ -2,7 +2,7 @@ import { loadAllResourcesAsync, modelAssets, RuntimeObject } from "./resources.j
 import { AnimationTimer } from "./timer.js";
 
 /**
- * @import { RuntimeObject } from './resources.js'
+ * @import { ModelAsset } from './resources.js'
  */
 
 /**
@@ -41,7 +41,6 @@ export class Game {
 
   /**
    * @param {HTMLCanvasElement} canvas
-   * @param {}
    */
   constructor(canvas) {
     this.#gl = initializeGL(canvas);
@@ -50,7 +49,7 @@ export class Game {
   }
 
   /**
-   * 
+   *
    */
   async initializeGraphicsAsync() {
     const gl = this.#gl;
@@ -171,7 +170,7 @@ export class Game {
   }
 
   /**
-   * 
+   *
    */
   run() {
     this.#timer.resume();
@@ -179,7 +178,7 @@ export class Game {
   }
 
   /**
-   * 
+   *
    */
   updateCanvasSize() {
     const gl = this.#gl;
@@ -187,7 +186,7 @@ export class Game {
   }
 
   /**
-   * 
+   *
    */
   #render() {
     const gl = this.#gl;
@@ -219,7 +218,7 @@ export class Game {
   }
 
   /**
-   * 
+   *
    */
   #cleanUpAll() {
     const gl = this.#gl;
