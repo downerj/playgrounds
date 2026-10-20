@@ -10,6 +10,10 @@ class ModelAsset {
    */
   indices;
   /**
+   * @type {Float32Array}
+   */
+  colors;
+  /**
    * @type {number}
    */
   indexCount;
@@ -17,10 +21,12 @@ class ModelAsset {
   /**
    * @param {Iterable<number>} vertexData
    * @param {Iterable<number>} indexData
+   * @param {Iterable<number>} colorData
    */
-  constructor(vertexData, indexData) {
+  constructor(vertexData, indexData, colorData) {
     this.vertices = new Float32Array(vertexData);
     this.indices = new Uint16Array(indexData);
+    this.colors = new Float32Array(colorData);
     this.indexCount = indexData.length;
   }
 }
@@ -39,6 +45,10 @@ class RuntimeObject {
    */
   ibo;
   /**
+   * @type {WebGLBuffer}
+   */
+  colorBuffer;
+  /**
    * @type {number}
    */
   indexCount;
@@ -47,12 +57,14 @@ class RuntimeObject {
    * @param {WebGLVertexArrayObject} vao
    * @param {WebGLBuffer} vbo
    * @param {WebGLBuffer} ibo
+   * @param {WebGLBuffer} colorBuffer
    * @param {number} indexCount
    */
-  constructor(vao, vbo, ibo, indexCount) {
+  constructor(vao, vbo, ibo, colorBuffer, indexCount) {
     this.vao = vao;
     this.vbo = vbo;
     this.ibo = ibo;
+    this.colorBuffer = colorBuffer;
     this.indexCount = indexCount;
   }
 }
@@ -72,6 +84,16 @@ const modelDefintions = {
     indices: [
       0, 1, 2,
       0, 2, 3
+    ],
+    colors: [
+      // Bottom left
+      1.0, 0.0, 0.0, 1.0,
+      // Bottom right
+      0.0, 1.0, 0.0, 1.0,
+      // Top right
+      0.0, 0.0, 1.0, 1.0,
+      // Top left
+      1.0, 1.0, 1.0, 1.0
     ]
   }
 };
@@ -79,7 +101,8 @@ const modelDefintions = {
 const modelAssets = {
   rectangle: new ModelAsset(
     modelDefintions.rectangle.vertices,
-    modelDefintions.rectangle.indices
+    modelDefintions.rectangle.indices,
+    modelDefintions.rectangle.colors
   )
 };
 
@@ -174,7 +197,7 @@ export class Game {
       const resources = await loadAllResourcesAsync();
       const mainVertexShader = this.#initializeShader(resources.mainVertexSource, gl.VERTEX_SHADER);
       const mainFragmentShader = this.#initializeShader(resources.mainFragmentSource, gl.FRAGMENT_SHADER);
-      this.#prorgams.main = (() => {
+      const mainProgram = (() => {
         try {
           return this.#initializeProgram(mainVertexShader, mainFragmentShader);
         } catch (ex) {
@@ -184,10 +207,13 @@ export class Game {
           gl.deleteShader(mainFragmentShader);
         }
       })();
-      this.#dataObjects.rectangle = this.#initializeVertexArray(
+      const rectangle = this.#initializeVertexArray(
         modelAssets.rectangle,
-        gl.getAttribLocation(this.#prorgams.main, 'position')
+        gl.getAttribLocation(mainProgram, 'position'),
+        gl.getAttribLocation(mainProgram, 'color')
       );
+      this.#dataObjects.rectangle = rectangle;
+      this.#prorgams.main = mainProgram;
       return true;
     } catch (ex) {
       console.error(ex);
@@ -250,10 +276,11 @@ export class Game {
 
   /**
    * @param {ModelAsset} asset
-   * @param {GLuint} location
+   * @param {GLuint} positionLocation
+   * @param {GLuint} colorLocation
    * @returns {RuntimeObject}
    */
-  #initializeVertexArray(asset, location) {
+  #initializeVertexArray(asset, positionLocation, colorLocation) {
     const gl = this.#gl;
 
     const vao = gl.createVertexArray();
@@ -262,8 +289,14 @@ export class Game {
     const vbo = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
     gl.bufferData(gl.ARRAY_BUFFER, asset.vertices, gl.STATIC_DRAW);
-    gl.enableVertexAttribArray(location);
-    gl.vertexAttribPointer(location, 3, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, false, 0, 0);
+
+    const colorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, asset.colors, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(colorLocation);
+    gl.vertexAttribPointer(colorLocation, 4, gl.FLOAT, false, 0, 0);
 
     const ibo = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
@@ -273,7 +306,7 @@ export class Game {
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
 
-    return new RuntimeObject(vao, vbo, ibo, asset.indexCount);
+    return new RuntimeObject(vao, vbo, ibo, colorBuffer, asset.indexCount);
   }
 
   /**
@@ -337,6 +370,7 @@ export class Game {
       gl.deleteVertexArray(dataObject.vao);
       gl.deleteBuffer(dataObject.vbo);
       gl.deleteBuffer(dataObject.ibo);
+      gl.deleteBuffer(dataObject.colorBuffer);
     }
 
     gl.useProgram(null);

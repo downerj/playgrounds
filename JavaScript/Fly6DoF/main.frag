@@ -6,8 +6,9 @@ precision highp float;
 precision mediump float;
 #endif
 
+in vec4 vertexColor;
 out vec4 fragColor;
 
 void main(void) {
-  fragColor = vec4(1.0, 0.0, 0.0, 1.0);
+  fragColor = vertexColor;
 }
