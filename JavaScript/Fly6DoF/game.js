@@ -121,20 +121,20 @@ export class Game {
     return program;
   }
 
-  // /**
-  //  * @param {GLenum} target
-  //  * @param {AllowSharedBufferSource} data
-  //  * @param {GLenum} usage
-  //  * @returns {WebGLBuffer}
-  //  */
-  // #initializeBuffer(target, data, usage) {
-  //   const gl = this.#gl;
-  //   const buffer = gl.createBuffer();
-  //   gl.bindBuffer(target, buffer);
-  //   gl.bufferData(target, data, usage);
-  //   gl.bindBuffer(target, null);
-  //   return buffer;
-  // }
+  /**
+   * @param {GLenum} target
+   * @param {AllowSharedBufferSource} data
+   * @param {GLenum} usage
+   * @returns {WebGLBuffer}
+   */
+  #initializeBuffer(target, data, usage) {
+    const gl = this.#gl;
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(target, buffer);
+    gl.bufferData(target, data, usage);
+    gl.bindBuffer(target, null);
+    return buffer;
+  }
 
   /**
    * @param {ModelAsset} asset
@@ -223,25 +223,25 @@ export class Game {
     this.#render();
   }
 
-  // /**
-  //  * 
-  //  */
-  // cleanUpAll() {
-  //   const gl = this.#gl;
+  /**
+   * 
+   */
+  #cleanUpAll() {
+    const gl = this.#gl;
 
-  //   gl.bindVertexArray(null);
-  //   gl.bindBuffer(gl.ARRAY_BUFFER, null);
-  //   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
-  //   for (const dataObject of Object.values(this.#dataObjects)) {
-  //     gl.deleteVertexArray(dataObject.vao);
-  //     gl.deleteBuffer(dataObject.vbo);
-  //     gl.deleteBuffer(dataObject.ibo);
-  //     gl.deleteBuffer(dataObject.colorBuffer);
-  //   }
+    gl.bindVertexArray(null);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+    for (const dataObject of Object.values(this.#dataObjects)) {
+      gl.deleteVertexArray(dataObject.vao);
+      gl.deleteBuffer(dataObject.vbo);
+      gl.deleteBuffer(dataObject.ibo);
+      gl.deleteBuffer(dataObject.colorBuffer);
+    }
 
-  //   gl.useProgram(null);
-  //   for (const program of Object.values(this.#programs)) {
-  //     gl.deleteProgram(program);
-  //   }
-  // }
+    gl.useProgram(null);
+    for (const program of Object.values(this.#programs)) {
+      gl.deleteProgram(program);
+    }
+  }
 }
