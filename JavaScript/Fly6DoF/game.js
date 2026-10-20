@@ -19,10 +19,6 @@ const initializeGL = (canvas) => {
 
 export class Game {
   /**
-   * @type {HTMLCanvasElement}
-   */
-  #canvas;
-  /**
    * @type {WebGL2RenderingContext}
    */
   #gl;
@@ -48,7 +44,6 @@ export class Game {
    * @param {}
    */
   constructor(canvas) {
-    this.#canvas = canvas;
     this.#gl = initializeGL(canvas);
     console.log('WebGL 2 context initialized');
     this.#timer = new AnimationTimer(timestamp => this.#onTick(timestamp), 1000/60);
