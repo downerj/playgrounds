@@ -93,6 +93,27 @@ export const modelDefinitions = {
       // Top left
       1.0, 1.0, 1.0, 1.0
     ]
+  },
+  triangle: {
+    vertices: [
+      // Bottom left
+      -1.0, -1.0, 0.0,
+      // Bottom right
+      1.0, -1.0, 0.0,
+      // Top middle
+      0.0, 1.0, 0.0
+    ],
+    indices: [
+      0, 1, 2
+    ],
+    colors: [
+      // Bottom left
+      1.0, 0.0, 0.0, 1.0,
+      // Bottom right
+      0.0, 1.0, 0.0, 1.0,
+      // Top middle
+      0.0, 0.0, 1.0, 1.0
+    ]
   }
 };
 
@@ -101,6 +122,11 @@ export const modelAssets = {
     modelDefinitions.rectangle.vertices,
     modelDefinitions.rectangle.indices,
     modelDefinitions.rectangle.colors
+  ),
+  triangle: new ModelAsset(
+    modelDefinitions.triangle.vertices,
+    modelDefinitions.triangle.indices,
+    modelDefinitions.triangle.colors
   )
 };
 

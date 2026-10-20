@@ -36,7 +36,7 @@ export class Game {
    * @type {{ [name: string]: RuntimeObject }}
    */
   #dataObjects = {
-    rectangle: undefined
+    shape: undefined
   }
 
   /**
@@ -67,8 +67,8 @@ export class Game {
           gl.deleteShader(mainFragmentShader);
         }
       })();
-      const rectangle = this.#initializeVertexArray(modelAssets.rectangle, mainProgram);
-      this.#dataObjects.rectangle = rectangle;
+      const shape = this.#initializeVertexArray(modelAssets.triangle, mainProgram);
+      this.#dataObjects.shape = shape;
       this.#programs.main = mainProgram;
       return true;
     } catch (ex) {
@@ -201,10 +201,10 @@ export class Game {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     gl.useProgram(this.#programs.main);
-    const rectangle = this.#dataObjects.rectangle;
-    gl.bindVertexArray(rectangle.vao);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, rectangle.ibo);
-    gl.drawElements(gl.TRIANGLES, rectangle.indexCount, gl.UNSIGNED_SHORT, 0);
+    const shape = this.#dataObjects.shape;
+    gl.bindVertexArray(shape.vao);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, shape.ibo);
+    gl.drawElements(gl.TRIANGLES, shape.indexCount, gl.UNSIGNED_SHORT, 0);
 
     gl.bindVertexArray(null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
