@@ -67,7 +67,7 @@ export class Game {
           gl.deleteShader(mainFragmentShader);
         }
       })();
-      const shape = this.#initializeVertexArray(modelAssets.triangle, mainProgram);
+      const shape = this.#initializeVertexArray(modelAssets.cube, mainProgram);
       this.#dataObjects.shape = shape;
       this.#programs.main = mainProgram;
       return true;
