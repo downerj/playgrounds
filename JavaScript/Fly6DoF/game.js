@@ -1,9 +1,47 @@
-import { loadAllResourcesAsync, modelAssets, RuntimeObject } from './resources.js';
+import { loadAllResourcesAsync, modelAssets } from './resources.js';
 import { AnimationTimer } from './timer.js';
 
 /**
  * @import { ModelAsset } from './resources.js'
  */
+
+export class RuntimeObject {
+  /**
+   * @type {WebGLVertexArrayObject}
+   */
+  vao;
+  /**
+   * @type {WebGLBuffer}
+   */
+  vbo;
+  /**
+   * @type {WebGLBuffer}
+   */
+  ibo;
+  /**
+   * @type {WebGLBuffer}
+   */
+  colorBuffer;
+  /**
+   * @type {number}
+   */
+  indexCount;
+
+  /**
+   * @param {WebGLVertexArrayObject} vao
+   * @param {WebGLBuffer} vbo
+   * @param {WebGLBuffer} ibo
+   * @param {WebGLBuffer} colorBuffer
+   * @param {number} indexCount
+   */
+  constructor(vao, vbo, ibo, colorBuffer, indexCount) {
+    this.vao = vao;
+    this.vbo = vbo;
+    this.ibo = ibo;
+    this.colorBuffer = colorBuffer;
+    this.indexCount = indexCount;
+  }
+}
 
 /**
  * @param {HTMLCanvasElement} canvas

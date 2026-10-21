@@ -29,44 +29,6 @@ export class ModelAsset {
   }
 }
 
-export class RuntimeObject {
-  /**
-   * @type {WebGLVertexArrayObject}
-   */
-  vao;
-  /**
-   * @type {WebGLBuffer}
-   */
-  vbo;
-  /**
-   * @type {WebGLBuffer}
-   */
-  ibo;
-  /**
-   * @type {WebGLBuffer}
-   */
-  colorBuffer;
-  /**
-   * @type {number}
-   */
-  indexCount;
-
-  /**
-   * @param {WebGLVertexArrayObject} vao
-   * @param {WebGLBuffer} vbo
-   * @param {WebGLBuffer} ibo
-   * @param {WebGLBuffer} colorBuffer
-   * @param {number} indexCount
-   */
-  constructor(vao, vbo, ibo, colorBuffer, indexCount) {
-    this.vao = vao;
-    this.vbo = vbo;
-    this.ibo = ibo;
-    this.colorBuffer = colorBuffer;
-    this.indexCount = indexCount;
-  }
-}
-
 class Colors {
   static black = [0.0, 0.0, 0.0];
   static red = [1.0, 0.0, 0.0];
